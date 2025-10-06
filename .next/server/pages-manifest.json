@@ -1,12 +1,1 @@
-{
-  "/_app": "pages/_app.js",
-  "/auth/login": "pages/auth/login.js",
-  "/auth/register": "pages/auth/register.js",
-  "/api/products": "pages/api/products.js",
-  "/api/auth": "pages/api/auth.js",
-  "/dashboard/admin": "pages/dashboard/admin.js",
-  "/": "pages/index.js",
-  "/dashboard/user": "pages/dashboard/user.js",
-  "/_error": "pages/_error.js",
-  "/_document": "pages/_document.js"
-}
+{"/_error":"pages/_error.js","/api/auth":"pages/api/auth.js","/auth/login":"pages/auth/login.html","/api/products":"pages/api/products.js","/auth/register":"pages/auth/register.html","/_app":"pages/_app.js","/dashboard/admin":"pages/dashboard/admin.html","/dashboard/user":"pages/dashboard/user.html","/":"pages/index.html","/_document":"pages/_document.js","/404":"pages/404.html"}

@@ -73,16 +73,7 @@ export default function Products({ data }) {
                 </div>
                 
                 {/* Botón CTA */}
-                <button className="btn-primary product-cta-button"
-                  onMouseEnter={(e) => {
-                    e.target.style.backgroundColor = '#1d4ed8'
-                    e.target.style.transform = 'scale(1.05)'
-                  }}
-                  onMouseLeave={(e) => {
-                    e.target.style.backgroundColor = '#2563eb'
-                    e.target.style.transform = 'scale(1)'
-                  }}
-                >
+                <button className="btn-primary product-cta-button">
                   Solicitar Cotización
                 </button>
               </div>
