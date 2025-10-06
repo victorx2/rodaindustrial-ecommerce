@@ -18,7 +18,16 @@
 
 export default function Hero({ data }) {
   return (
-    <section className="hero-section">
+    <section className="hero-section" style={{
+      position: 'relative',
+      minHeight: '100vh',
+      background: 'linear-gradient(135deg, #1f2937 0%, #1e40af 50%, #1f2937 100%)',
+      overflow: 'hidden',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      width: '100%'
+    }}>
       {/* Fondo con overlay */}
       <div className="hero-overlay"></div>
       

@@ -20,7 +20,7 @@ import { footerData } from '../../lib/footerData'
 
 export default function Layout({ children }) {
   return (
-    <div style={{ minHeight: '100vh', backgroundColor: '#f9fafb' }}>
+    <div style={{ minHeight: '100vh', backgroundColor: 'white' }}>
       <Header data={headerData} />
       <main>
         {children}
