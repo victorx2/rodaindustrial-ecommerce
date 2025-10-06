@@ -33,7 +33,7 @@ export default function Products({ data }) {
         
         {/* Grid de productos */}
         <div className="products-grid">
-          {data.products.map((product) => (
+          {data?.products?.map((product) => (
             <div key={product.id} className="product-card">
               {/* Imagen del producto */}
               <div className="product-image-container">
@@ -87,13 +87,13 @@ export default function Products({ data }) {
                 </button>
               </div>
             </div>
-          ))}
+          )) || []}
         </div>
         
         {/* Características destacadas */}
         <div className="products-features">
           <div className="products-features-grid">
-            {data.features.map((feature, index) => (
+            {data?.features?.map((feature, index) => (
               <div key={index} className="products-feature-card">
                 <div className="products-feature-icon">
                   {feature.icon}
@@ -105,7 +105,7 @@ export default function Products({ data }) {
                   {feature.description}
                 </p>
               </div>
-            ))}
+            )) || []}
           </div>
         </div>
       </div>

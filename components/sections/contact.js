@@ -64,7 +64,7 @@ export default function Contact({ data }) {
 
             {/* Características destacadas */}
             <div className="contact-features-grid">
-              {data.features.map((feature, index) => (
+              {data?.features?.map((feature, index) => (
                 <div key={index} className="contact-feature-card">
                   <div className="contact-feature-icon">
                     {feature.icon}
@@ -76,7 +76,7 @@ export default function Contact({ data }) {
                     {feature.description}
                   </p>
                 </div>
-              ))}
+              )) || []}
             </div>
           </div>
 

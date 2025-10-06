@@ -87,7 +87,7 @@ export default function Header({ data }) {
           {/* Navegación Desktop */}
           {!isMobile && (
             <nav className="header-desktop-nav">
-            {data.navigation.map((item, index) => (
+            {data?.navigation?.map((item, index) => (
               <a
                 key={item.name}
                 href={item.href}
@@ -133,7 +133,7 @@ export default function Header({ data }) {
         {/* Mobile Menu */}
         {isMobile && isMenuOpen && (
           <div className="mobile-menu">
-            {data.navigation.map((item, index) => (
+            {data?.navigation?.map((item, index) => (
               <a
                 key={item.name}
                 href={item.href}

@@ -33,21 +33,21 @@ export default function Footer({ data }) {
             </div>
             
             <p className="footer-description">
-              {data.company.description}
+              {data?.company?.description || 'Descripción no disponible'}
             </p>
             
             <div className="footer-contact-info">
               <div className="footer-contact-item">
-                📍 {data.company.address}
+                📍 {data?.company?.address || 'Dirección no disponible'}
               </div>
               <div className="footer-contact-item">
-                📞 {data.company.phone}
+                📞 {data?.company?.phone || 'Teléfono no disponible'}
               </div>
               <div className="footer-contact-item">
-                📧 {data.company.email}
+                📧 {data?.company?.email || 'Email no disponible'}
               </div>
               <div className="footer-contact-item">
-                📠 {data.company.fax}
+                📠 {data?.company?.fax || 'Fax no disponible'}
               </div>
             </div>
           </div>
@@ -58,13 +58,13 @@ export default function Footer({ data }) {
               Productos
             </h4>
             <ul className="footer-links-list">
-              {data.links.products.map((link, index) => (
+              {data?.links?.products?.map((link, index) => (
                 <li key={index} className="footer-links-item">
                   <a href={link.href} className="footer-link">
                     {link.name}
                   </a>
                 </li>
-              ))}
+              )) || []}
             </ul>
           </div>
 
@@ -74,13 +74,13 @@ export default function Footer({ data }) {
               Empresa
             </h4>
             <ul className="footer-links-list">
-              {data.links.company.map((link, index) => (
+              {data?.links?.company?.map((link, index) => (
                 <li key={index} className="footer-links-item">
                   <a href={link.href} className="footer-link">
                     {link.name}
                   </a>
                 </li>
-              ))}
+              )) || []}
             </ul>
           </div>
 
@@ -90,13 +90,13 @@ export default function Footer({ data }) {
               Soporte
             </h4>
             <ul className="footer-links-list">
-              {data.links.support.map((link, index) => (
+              {data?.links?.support?.map((link, index) => (
                 <li key={index} className="footer-links-item">
                   <a href={link.href} className="footer-link">
                     {link.name}
                   </a>
                 </li>
-              ))}
+              )) || []}
             </ul>
           </div>
         </div>
@@ -104,11 +104,11 @@ export default function Footer({ data }) {
         {/* Certificaciones */}
         <div className="footer-certifications">
           <div className="footer-certifications-grid">
-            {data.certifications.map((cert, index) => (
+            {data?.certifications?.map((cert, index) => (
               <div key={index} className="footer-certification-badge">
                 {cert}
               </div>
-            ))}
+            )) || []}
           </div>
         </div>
 
@@ -116,7 +116,7 @@ export default function Footer({ data }) {
         <div className="footer-bottom">
           {/* Redes sociales */}
           <div className="footer-social-links">
-            {data.social.map((social, index) => (
+            {data?.social?.map((social, index) => (
               <a
                 key={index}
                 href={social.href}
@@ -127,12 +127,12 @@ export default function Footer({ data }) {
                 <span>{social.icon}</span>
                 <span>{social.name}</span>
               </a>
-            ))}
+            )) || []}
           </div>
 
           {/* Copyright */}
           <div className="footer-copyright">
-            {data.copyright}
+            {data?.copyright || '© 2024 FSKG Industrial Bearings Co., Ltd. Todos los derechos reservados.'}
           </div>
         </div>
       </div>
