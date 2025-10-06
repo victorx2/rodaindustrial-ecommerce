@@ -1,6 +1,9 @@
-/* Estilos básicos para FSKG - Sin Tailwind CSS */
+/* Estilos básicos para FSKG - Optimizado para Performance */
 html {
   font-family: 'Inter', system-ui, sans-serif;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
@@ -171,6 +174,7 @@ body {
   grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
   margin-bottom: 3rem;
+  place-items: center;
 }
 
 .stat-item {
@@ -201,11 +205,13 @@ body {
   border-radius: 0.5rem;
   font-weight: 600;
   font-size: 1.125rem;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   transform: scale(1);
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
   border: none;
   cursor: pointer;
+  will-change: transform, background-color;
+  touch-action: manipulation;
 }
 
 .btn-primary:hover {
@@ -729,6 +735,12 @@ body {
   .stats-grid {
     grid-template-columns: repeat(2, 1fr) !important;
     gap: 1rem !important;
+    place-items: center !important;
+  }
+
+  .stat-item {
+    min-width: 0 !important;
+    word-wrap: break-word !important;
   }
 
   .cta-buttons {
@@ -740,6 +752,8 @@ body {
   .btn-secondary {
     width: 100% !important;
     padding: 0.875rem 1.5rem !important;
+    min-height: 44px !important;
+    touch-action: manipulation !important;
   }
 
   /* About Section Mobile - iPhone SE Optimized */
@@ -915,6 +929,35 @@ body {
   }
 }
 
+/* Small Mobile Optimization */
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 1.5rem !important;
+    line-height: 1.1 !important;
+  }
+
+  .hero-subtitle {
+    font-size: 0.875rem !important;
+  }
+
+  .hero-description {
+    font-size: 0.75rem !important;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem !important;
+  }
+
+  .stat-number {
+    font-size: 1.5rem !important;
+  }
+
+  .stat-label {
+    font-size: 0.75rem !important;
+  }
+}
+
 /* Tablet */
 @media (min-width: 768px) and (max-width: 1024px) {
   .hero-title {
@@ -953,49 +996,50 @@ body {
 /* Desktop */
 @media (min-width: 1025px) {
   .hero-title {
-    font-size: 6rem;
+    font-size: 6rem !important;
   }
 
   .hero-subtitle {
-    font-size: 1.875rem;
+    font-size: 1.875rem !important;
   }
 
   .hero-description {
-    font-size: 1.25rem;
+    font-size: 1.25rem !important;
   }
 
   .stats-grid {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, 1fr) !important;
   }
 
   .stat-number {
-    font-size: 2.5rem;
+    font-size: 2.5rem !important;
   }
 
   .stat-label {
-    font-size: 1rem;
+    font-size: 1rem !important;
   }
 
   .products-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr) !important;
   }
 
   .about-section .image-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr) !important;
   }
 
   .contact-container {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr) !important;
   }
 
   .contact-form-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr) !important;
   }
 
   .contact-info-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr) !important;
   }
 
   .footer-container {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, 1fr) !important;
   }
+}
