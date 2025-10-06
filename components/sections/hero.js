@@ -18,16 +18,7 @@
 
 export default function Hero({ data }) {
   return (
-    <section className="hero-section" style={{
-      position: 'relative',
-      minHeight: '100vh',
-      background: 'linear-gradient(135deg, #1f2937 0%, #1e40af 50%, #1f2937 100%)',
-      overflow: 'hidden',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      width: '100%'
-    }}>
+    <section className="hero-section">
       {/* Fondo con overlay */}
       <div className="hero-overlay"></div>
       
@@ -69,38 +60,11 @@ export default function Hero({ data }) {
         </div>
         
         {/* CTAs */}
-        <div className="cta-buttons" style={{
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '1rem',
-          justifyContent: 'center',
-          alignItems: 'center',
-          width: '100%'
-        }}>
-          <button className="btn-primary" style={{
-            width: '100%',
-            padding: '0.875rem 1.5rem',
-            fontSize: '1rem',
-            backgroundColor: '#2563eb',
-            color: 'white',
-            border: 'none',
-            borderRadius: '0.5rem',
-            fontWeight: '600',
-            cursor: 'pointer'
-          }}>
+        <div className="cta-buttons">
+          <button className="btn-primary hero-cta-primary">
             {data.ctaPrimary}
           </button>
-          <button className="btn-secondary" style={{
-            width: '100%',
-            padding: '0.875rem 1.5rem',
-            fontSize: '1rem',
-            backgroundColor: 'transparent',
-            color: '#93c5fd',
-            border: '2px solid #93c5fd',
-            borderRadius: '0.5rem',
-            fontWeight: '600',
-            cursor: 'pointer'
-          }}>
+          <button className="btn-secondary hero-cta-secondary">
             {data.ctaSecondary}
           </button>
         </div>

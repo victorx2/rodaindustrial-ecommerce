@@ -1,4 +1,10 @@
-/* Estilos básicos para FSKG - Optimizado para Performance */
+/* ========================================
+   FSKG INDUSTRIAL BEARINGS - CSS LIMPIO
+   ======================================== */
+
+/* ========================================
+   1. RESET Y BASE
+   ======================================== */
 html {
   font-family: 'Inter', system-ui, sans-serif;
   scroll-behavior: smooth;
@@ -9,18 +15,22 @@ html {
 body {
   margin: 0;
   padding: 0;
-  background-color: #f9fafb;
+  background-color: white;
   color: #111827;
 }
 
-/* Header Styles */
-.header-top {
-  background-color: #1f2937;
-  color: white;
-  padding: 0.5rem 0;
-  font-size: 0.875rem;
+/* ========================================
+   2. LAYOUT PRINCIPAL
+   ======================================== */
+.container {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
+/* ========================================
+   3. HEADER STYLES
+   ======================================== */
 .header-main {
   background-color: white;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
@@ -29,26 +39,56 @@ body {
   z-index: 50;
 }
 
-.container {
-  max-width: 80rem;
-  margin: 0 auto;
-  padding: 0 1rem;
+.header-top {
+  background-color: #1f2937;
+  color: white;
+  padding: 0.5rem 0;
+  font-size: 0.875rem;
 }
 
-.flex {
+.header-contact-info {
   display: flex;
-}
-
-.justify-between {
   justify-content: space-between;
-}
-
-.items-center {
   align-items: center;
 }
 
-.py-4 {
+.header-contact-left {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.header-contact-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.header-contact-item {
+  display: flex;
+  align-items: center;
+}
+
+.header-icon {
+  width: 1rem;
+  height: 1rem;
+  margin-right: 0.5rem;
+}
+
+.header-main-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding: 1rem 0;
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-container {
+  flex-shrink: 0;
 }
 
 .logo {
@@ -59,21 +99,29 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.logo-text {
   color: white;
   font-weight: bold;
   font-size: 1.25rem;
+}
+
+.company-info {
+  margin-left: 0.75rem;
 }
 
 .company-name {
   font-size: 1.5rem;
   font-weight: bold;
   color: #111827;
-  margin-left: 0.75rem;
+  margin: 0;
 }
 
 .company-tagline {
   font-size: 0.875rem;
   color: #6b7280;
+  margin: 0;
 }
 
 /* Header Navigation */
@@ -101,6 +149,13 @@ body {
   border-bottom: 2px solid #2563eb;
 }
 
+.dropdown-icon {
+  width: 1rem;
+  height: 1rem;
+  margin-left: 0.25rem;
+  display: inline;
+}
+
 .header-desktop-cta {
   display: block;
 }
@@ -113,13 +168,48 @@ body {
   padding: 0.5rem;
 }
 
-.header-mobile-menu svg {
+.mobile-menu-icon {
   width: 1.5rem;
   height: 1.5rem;
   color: #374151;
 }
 
-/* Hero Section */
+.mobile-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: white;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  z-index: 50;
+  padding: 1rem;
+}
+
+.mobile-menu a {
+  display: block;
+  padding: 0.75rem 0;
+  color: #374151;
+  text-decoration: none;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.mobile-menu a:last-child {
+  border-bottom: none;
+}
+
+.mobile-menu-cta {
+  padding: 0.75rem 0;
+  border-top: 1px solid #e5e7eb;
+  margin-top: 0.5rem;
+}
+
+.mobile-cta-button {
+  width: 100%;
+}
+
+/* ========================================
+   4. HERO SECTION
+   ======================================== */
 .hero-section {
   position: relative;
   min-height: 100vh;
@@ -128,6 +218,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
 }
 
 .hero-overlay {
@@ -144,6 +235,7 @@ body {
   max-width: 80rem;
   margin: 0 auto;
   padding: 0 1rem;
+  width: 100%;
 }
 
 .hero-title {
@@ -198,44 +290,16 @@ body {
   flex-wrap: wrap;
 }
 
-.btn-primary {
-  background-color: #2563eb;
-  color: white;
-  padding: 1rem 2.5rem;
-  border-radius: 0.5rem;
-  font-weight: 600;
-  font-size: 1.125rem;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  transform: scale(1);
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-  border: none;
-  cursor: pointer;
-  will-change: transform, background-color;
-  touch-action: manipulation;
+.hero-cta-primary {
+  width: 100%;
+  padding: 0.875rem 1.5rem;
+  font-size: 1rem;
 }
 
-.btn-primary:hover {
-  background-color: #1d4ed8;
-  transform: scale(1.05);
-}
-
-.btn-secondary {
-  border: 2px solid #93c5fd;
-  color: #93c5fd;
-  padding: 1rem 2.5rem;
-  border-radius: 0.5rem;
-  font-weight: 600;
-  font-size: 1.125rem;
-  transition: all 0.3s ease;
-  transform: scale(1);
-  background: transparent;
-  cursor: pointer;
-}
-
-.btn-secondary:hover {
-  background-color: #93c5fd;
-  color: white;
-  transform: scale(1.05);
+.hero-cta-secondary {
+  width: 100%;
+  padding: 0.875rem 1.5rem;
+  font-size: 1rem;
 }
 
 .scroll-indicator {
@@ -279,7 +343,9 @@ body {
   }
 }
 
-/* About Section */
+/* ========================================
+   5. ABOUT SECTION
+   ======================================== */
 .about-section {
   padding: 5rem 1rem;
   background-color: white;
@@ -300,7 +366,7 @@ body {
   margin-bottom: 2rem;
 }
 
-.about-section p {
+.about-description {
   font-size: 1.125rem;
   color: #6b7280;
   max-width: 48rem;
@@ -308,14 +374,18 @@ body {
   line-height: 1.75;
 }
 
-.about-section .image-grid {
+.about-cta-button {
+  margin-bottom: 2rem;
+}
+
+.image-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
   margin-top: 4rem;
 }
 
-.about-section .image-placeholder {
+.image-placeholder {
   background-color: #f3f4f6;
   height: 300px;
   border-radius: 0.5rem;
@@ -326,639 +396,215 @@ body {
   font-size: 1.125rem;
 }
 
-/* Products Section */
-.products-section {
-  padding: 5rem 1rem;
-  background-color: #f3f4f6;
-  text-align: center;
-}
-
-.products-section h2 {
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: #1f2937;
-  margin-bottom: 1rem;
-}
-
-.products-section h3 {
-  font-size: 3rem;
-  font-weight: bold;
-  color: #1f2937;
-  margin-bottom: 3rem;
-}
-
-.products-grid {
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  gap: 2rem;
-}
-
-.product-card {
-  background-color: white;
+/* ========================================
+   6. BUTTONS
+   ======================================== */
+.btn-primary {
+  background-color: #2563eb;
+  color: white;
+  padding: 1rem 2.5rem;
   border-radius: 0.5rem;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-}
-
-.product-card:hover {
-  transform: translateY(-0.5rem);
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-}
-
-.product-image-placeholder {
-  width: 100%;
-  height: 200px;
-  background-color: #e5e7eb;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #6b7280;
-  font-size: 1rem;
-  font-weight: 500;
-}
-
-.product-content {
-  padding: 1.5rem;
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.product-category {
-  font-size: 0.75rem;
   font-weight: 600;
-  color: #2563eb;
-  text-transform: uppercase;
-  margin-bottom: 0.5rem;
-}
-
-.product-title {
-  font-size: 1.25rem;
-  font-weight: bold;
-  color: #1f2937;
-  margin-bottom: 1rem;
-}
-
-.product-specs {
-  margin-bottom: 1.5rem;
-  color: #4b5563;
-  font-size: 0.875rem;
-}
-
-.product-specs div {
-  margin-bottom: 0.25rem;
-}
-
-.product-specs strong {
-  color: #1f2937;
-}
-
-.product-badge {
-  display: inline-block;
-  background-color: #dbeafe;
-  color: #1e40af;
-  padding: 0.25rem 0.75rem;
-  border-radius: 9999px;
-  font-size: 0.75rem;
-  font-weight: 500;
-  margin-top: auto;
-  align-self: flex-start;
-}
-
-/* Contact Section */
-.contact-section {
-  padding: 5rem 1rem;
-  background-color: white;
-}
-
-.contact-container {
-  max-width: 80rem;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 4rem;
-  align-items: center;
-}
-
-.contact-image-side {
-  position: relative;
-  height: 400px;
-  background-color: #e5e7eb;
-  border-radius: 0.5rem;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #6b7280;
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-.contact-image-overlay {
-  position: absolute;
-  top: 2rem;
-  left: 2rem;
-  background-color: #1e3a8a;
-  color: white;
-  padding: 0.75rem 1.5rem;
-  border-radius: 0.25rem;
-  font-size: 1.25rem;
-  font-weight: bold;
-}
-
-.contact-form-side {
-  background-color: #1e3a8a;
-  color: white;
-  padding: 3rem;
-  border-radius: 0.5rem;
+  font-size: 1.125rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: scale(1);
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  border: none;
+  cursor: pointer;
+  will-change: transform, background-color;
+  touch-action: manipulation;
 }
 
-.contact-form-side h2 {
-  font-size: 2.5rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-  position: relative;
-  display: inline-block;
+.btn-primary:hover {
+  background-color: #1d4ed8;
+  transform: scale(1.05);
 }
 
-.contact-form-side h2::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: -0.5rem;
-  width: 50%;
-  height: 4px;
-  background-color: white;
-}
-
-.contact-form-side p {
-  font-size: 1.125rem;
-  margin-bottom: 2rem;
-  line-height: 1.75;
-}
-
-.contact-form-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.5rem;
-  margin-bottom: 2rem;
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-}
-
-.form-group label {
-  font-size: 0.875rem;
-  font-weight: 500;
-  margin-bottom: 0.5rem;
-}
-
-.form-group input,
-.form-group textarea {
-  padding: 0.75rem 1rem;
-  border-radius: 0.375rem;
-  border: 1px solid #4b5563;
-  background-color: #374151;
-  color: white;
-  font-size: 1rem;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-  border-color: #60a5fa;
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.5);
-}
-
-.form-group textarea {
-  min-height: 100px;
-  resize: vertical;
-}
-
-.contact-info-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
-
-.info-item {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.info-item svg {
-  width: 1.5rem;
-  height: 1.5rem;
+.btn-secondary {
+  border: 2px solid #93c5fd;
   color: #93c5fd;
-}
-
-.info-item span {
-  font-size: 1rem;
-}
-
-/* Footer */
-.footer-section {
-  background-color: #1f2937;
-  color: white;
-  padding: 4rem 1rem;
-}
-
-.footer-container {
-  max-width: 80rem;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  gap: 3rem;
-  border-bottom: 1px solid #4b5563;
-  padding-bottom: 3rem;
-  margin-bottom: 2rem;
-}
-
-.footer-brand h3 {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-}
-
-.footer-brand p {
-  font-size: 0.875rem;
-  line-height: 1.5;
-  color: #d1d5db;
-  margin-bottom: 1.5rem;
-}
-
-.footer-social-links {
-  display: flex;
-  gap: 1rem;
-}
-
-.footer-social-links a {
-  color: white;
-  transition: color 0.3s ease;
-}
-
-.footer-social-links a:hover {
-  color: #2563eb;
-}
-
-.footer-links h4 {
-  font-size: 1.125rem;
+  padding: 1rem 2.5rem;
+  border-radius: 0.5rem;
   font-weight: 600;
-  margin-bottom: 1rem;
-}
-
-.footer-links ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.footer-links li {
-  margin-bottom: 0.75rem;
-}
-
-.footer-links a {
-  color: #d1d5db;
-  text-decoration: none;
-  font-size: 0.875rem;
-  transition: color 0.3s ease;
-}
-
-.footer-links a:hover {
-  color: white;
-}
-
-.footer-contact-info h4 {
   font-size: 1.125rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
+  transition: all 0.3s ease;
+  transform: scale(1);
+  background: transparent;
+  cursor: pointer;
 }
 
-.footer-contact-info p {
-  font-size: 0.875rem;
-  line-height: 1.5;
-  color: #d1d5db;
-  margin-bottom: 0.75rem;
-}
-
-.footer-contact-info a {
-  color: #d1d5db;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.footer-contact-info a:hover {
+.btn-secondary:hover {
+  background-color: #93c5fd;
   color: white;
+  transform: scale(1.05);
 }
 
-.footer-bottom {
-  max-width: 80rem;
-  margin: 0 auto;
-  text-align: center;
-  font-size: 0.875rem;
-  color: #d1d5db;
-}
+/* ========================================
+   7. RESPONSIVE DESIGN - MOBILE FIRST
+   ======================================== */
 
-/* Mobile Responsive - iPhone SE Optimized */
-@media (max-width: 767px) {
-
-  /* Header Mobile */
-  .header-desktop-nav {
-    display: none !important;
-  }
-
-  .header-desktop-cta {
-    display: none !important;
-  }
-
-  .header-mobile-menu {
-    display: block !important;
-  }
-
-  /* Mobile menu */
-  .mobile-menu {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background-color: white;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    z-index: 50;
-    padding: 1rem;
-  }
-
-  .mobile-menu a {
-    display: block;
-    padding: 0.75rem 0;
-    color: #374151;
-    text-decoration: none;
-    border-bottom: 1px solid #e5e7eb;
-  }
-
-  .mobile-menu a:last-child {
-    border-bottom: none;
-  }
-
-  /* Container responsive */
-  .container {
-    max-width: 100% !important;
-    padding: 0 0.5rem !important;
-  }
-
-  /* Hero Section Mobile - iPhone SE Optimized */
-  .hero-title {
-    font-size: 2rem !important;
-    line-height: 1.1 !important;
-  }
-
-  .hero-subtitle {
-    font-size: 1rem !important;
-    line-height: 1.3 !important;
-  }
-
-  .hero-description {
-    font-size: 0.875rem !important;
-    line-height: 1.5 !important;
-    padding: 0 0.5rem !important;
-  }
-
-  .stats-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 1rem !important;
-    place-items: center !important;
-  }
-
-  .stat-item {
-    min-width: 0 !important;
-    word-wrap: break-word !important;
-  }
-
-  .cta-buttons {
-    flex-direction: column !important;
-    gap: 1rem !important;
-  }
-
-  .btn-primary,
-  .btn-secondary {
-    width: 100% !important;
-    padding: 0.875rem 1.5rem !important;
-    min-height: 44px !important;
-    touch-action: manipulation !important;
-  }
-
-  /* About Section Mobile - iPhone SE Optimized */
-  .about-section {
-    padding: 2rem 0.5rem !important;
-  }
-
-  .about-section h2 {
-    font-size: 1.5rem !important;
-    line-height: 1.2 !important;
-    margin-bottom: 0.5rem !important;
-  }
-
-  .about-section h3 {
-    font-size: 1.75rem !important;
-    line-height: 1.2 !important;
-    margin-bottom: 1rem !important;
-  }
-
-  .about-section p {
-    font-size: 0.875rem !important;
-    line-height: 1.5 !important;
-    padding: 0 0.5rem !important;
-    margin-bottom: 1.5rem !important;
-  }
-
-  .about-section .image-grid {
-    grid-template-columns: 1fr !important;
-    gap: 0.75rem !important;
-    margin-top: 2rem !important;
-  }
-
-  .about-section .image-placeholder {
-    height: 150px !important;
-    font-size: 0.875rem !important;
-  }
-
-  /* Products Section Mobile - iPhone SE Optimized */
-  .products-section {
-    padding: 2rem 0.5rem !important;
-  }
-
-  .products-section h2 {
-    font-size: 1.5rem !important;
-    line-height: 1.2 !important;
-    margin-bottom: 0.5rem !important;
-  }
-
-  .products-section h3 {
-    font-size: 1.75rem !important;
-    line-height: 1.2 !important;
-    margin-bottom: 1.5rem !important;
-  }
-
-  .products-grid {
-    grid-template-columns: 1fr !important;
-    gap: 1rem !important;
-  }
-
-  /* Contact Section Mobile - iPhone SE Optimized */
-  .contact-section {
-    padding: 2rem 0.5rem !important;
-  }
-
-  .contact-container {
-    grid-template-columns: 1fr !important;
-    gap: 1.5rem !important;
-  }
-
-  .contact-form-side {
-    padding: 1.5rem !important;
-  }
-
-  .contact-form-side h2 {
-    font-size: 1.5rem !important;
-    line-height: 1.2 !important;
-  }
-
-  .contact-form-side p {
-    font-size: 0.875rem !important;
-    line-height: 1.5 !important;
-  }
-
-  .contact-info-grid {
-    grid-template-columns: 1fr !important;
-    gap: 1rem !important;
-  }
-
-  /* Footer Mobile - iPhone SE Optimized */
-  .footer-section {
-    padding: 2rem 0.5rem !important;
-  }
-
-  .footer-container {
-    grid-template-columns: 1fr !important;
-    gap: 1.5rem !important;
-    padding-bottom: 2rem !important;
-  }
-
-  .footer-brand h3 {
-    font-size: 1.25rem !important;
-  }
-
-  .footer-brand p {
-    font-size: 0.75rem !important;
-    line-height: 1.4 !important;
-  }
-
-  .footer-links h4 {
-    font-size: 1rem !important;
-  }
-
-  .footer-links a {
-    font-size: 0.75rem !important;
-  }
-
-  .footer-social-links {
-    justify-content: center !important;
-  }
-}
-
-/* iPhone SE Specific Optimization */
+/* Small Mobile (≤375px) */
 @media (max-width: 375px) {
   .container {
-    padding: 0 0.25rem !important;
+    padding: 0 0.5rem;
   }
 
   .hero-title {
-    font-size: 1.75rem !important;
+    font-size: 1.75rem;
+    line-height: 1.1;
   }
 
   .hero-subtitle {
-    font-size: 0.875rem !important;
+    font-size: 0.875rem;
+    line-height: 1.3;
   }
 
   .hero-description {
-    font-size: 0.75rem !important;
-    padding: 0 0.25rem !important;
-  }
-
-  .about-section h2 {
-    font-size: 1.25rem !important;
-  }
-
-  .about-section h3 {
-    font-size: 1.5rem !important;
-  }
-
-  .about-section p {
-    font-size: 0.75rem !important;
-  }
-
-  .products-section h2 {
-    font-size: 1.25rem !important;
-  }
-
-  .products-section h3 {
-    font-size: 1.5rem !important;
-  }
-
-  .contact-form-side h2 {
-    font-size: 1.25rem !important;
-  }
-
-  .contact-form-side p {
-    font-size: 0.75rem !important;
-  }
-
-  .btn-primary,
-  .btn-secondary {
-    padding: 0.75rem 1rem !important;
-    font-size: 0.875rem !important;
-  }
-}
-
-/* Small Mobile Optimization */
-@media (max-width: 480px) {
-  .hero-title {
-    font-size: 1.5rem !important;
-    line-height: 1.1 !important;
-  }
-
-  .hero-subtitle {
-    font-size: 0.875rem !important;
-  }
-
-  .hero-description {
-    font-size: 0.75rem !important;
+    font-size: 0.75rem;
+    line-height: 1.4;
+    padding: 0 0.5rem;
   }
 
   .stats-grid {
-    grid-template-columns: 1fr !important;
-    gap: 0.75rem !important;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
   }
 
   .stat-number {
-    font-size: 1.5rem !important;
+    font-size: 1.25rem;
   }
 
   .stat-label {
-    font-size: 0.75rem !important;
+    font-size: 0.625rem;
+  }
+
+  .about-section {
+    padding: 1.5rem 0.5rem;
+  }
+
+  .about-section h2 {
+    font-size: 1.25rem;
+    line-height: 1.2;
+  }
+
+  .about-section h3 {
+    font-size: 1.5rem;
+    line-height: 1.2;
+  }
+
+  .about-description {
+    font-size: 0.75rem;
+    line-height: 1.4;
+    margin-bottom: 1rem;
+  }
+
+  .image-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+  }
+
+  .image-placeholder {
+    height: 120px;
+    font-size: 0.75rem;
   }
 }
 
-/* Tablet */
+/* Mobile (≤767px) */
+@media (max-width: 767px) {
+  .header-desktop-nav {
+    display: none;
+  }
+
+  .header-desktop-cta {
+    display: none;
+  }
+
+  .header-mobile-menu {
+    display: block;
+  }
+
+  .container {
+    max-width: 100%;
+    padding: 0 0.5rem;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+    line-height: 1.1;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+    line-height: 1.3;
+  }
+
+  .hero-description {
+    font-size: 0.875rem;
+    line-height: 1.5;
+    padding: 0 0.5rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    place-items: center;
+  }
+
+  .stat-item {
+    min-width: 0;
+    word-wrap: break-word;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+    padding: 0.875rem 1.5rem;
+    min-height: 44px;
+    touch-action: manipulation;
+  }
+
+  .about-section {
+    padding: 2rem 0.5rem;
+  }
+
+  .about-section h2 {
+    font-size: 1.5rem;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+  }
+
+  .about-section h3 {
+    font-size: 1.75rem;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+
+  .about-description {
+    font-size: 0.875rem;
+    line-height: 1.5;
+    padding: 0 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .image-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    margin-top: 2rem;
+  }
+
+  .image-placeholder {
+    height: 150px;
+    font-size: 0.875rem;
+  }
+}
+
+/* Tablet (768px - 1024px) */
 @media (min-width: 768px) and (max-width: 1024px) {
   .hero-title {
     font-size: 4rem;
@@ -968,78 +614,31 @@ body {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .products-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
   .about-section .image-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .contact-container {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .contact-form-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .contact-info-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .footer-container {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-/* Desktop */
+/* Desktop (≥1025px) */
 @media (min-width: 1025px) {
   .hero-title {
-    font-size: 6rem !important;
-  }
-
-  .hero-subtitle {
-    font-size: 1.875rem !important;
-  }
-
-  .hero-description {
-    font-size: 1.25rem !important;
+    font-size: 6rem;
   }
 
   .stats-grid {
-    grid-template-columns: repeat(4, 1fr) !important;
-  }
-
-  .stat-number {
-    font-size: 2.5rem !important;
-  }
-
-  .stat-label {
-    font-size: 1rem !important;
-  }
-
-  .products-grid {
-    grid-template-columns: repeat(3, 1fr) !important;
+    grid-template-columns: repeat(4, 1fr);
   }
 
   .about-section .image-grid {
-    grid-template-columns: repeat(3, 1fr) !important;
+    grid-template-columns: repeat(3, 1fr);
   }
 
-  .contact-container {
-    grid-template-columns: repeat(2, 1fr) !important;
+  .cta-buttons {
+    flex-direction: row;
   }
 
-  .contact-form-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-  }
-
-  .contact-info-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-  }
-
-  .footer-container {
-    grid-template-columns: repeat(4, 1fr) !important;
+  .hero-cta-primary,
+  .hero-cta-secondary {
+    width: auto;
   }
 }
