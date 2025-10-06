@@ -14,7 +14,9 @@
  */
 
 import Header from './header'
+import Footer from './footer'
 import { headerData } from '../../lib/headerdata'
+import { footerData } from '../../lib/footerData'
 
 export default function Layout({ children }) {
   return (
@@ -23,6 +25,7 @@ export default function Layout({ children }) {
       <main>
         {children}
       </main>
+      <Footer data={footerData} />
     </div>
   )
 }
