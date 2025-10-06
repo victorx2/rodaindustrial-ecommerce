@@ -19,6 +19,7 @@ import { headerData } from '../../lib/headerdata'
 export default function Layout({ children }) {
   return (
     <div style={{ minHeight: '100vh', backgroundColor: '#f9fafb' }}>
+      <Header data={headerData} />
       <main>
         {children}
       </main>
