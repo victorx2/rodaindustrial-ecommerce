@@ -16,8 +16,6 @@
  * Props: title, subtitle, ctaText, backgroundImage
  */
 
-import { motion } from 'framer-motion'
-
 export default function Hero({ data }) {
   return (
     <section className="relative min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-gray-800 overflow-hidden">
@@ -28,43 +26,23 @@ export default function Hero({ data }) {
       <div className="relative z-10 flex items-center justify-center min-h-screen px-4">
         <div className="text-center text-white max-w-6xl mx-auto">
           
-          {/* Título principal con animación */}
-          <motion.h1 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-7xl md:text-8xl font-bold mb-4 tracking-tight"
-          >
+          {/* Título principal */}
+          <h1 className="text-7xl md:text-8xl font-bold mb-4 tracking-tight animate-fade-in">
             {data.title}
-          </motion.h1>
+          </h1>
           
           {/* Subtítulo */}
-          <motion.h2 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-2xl md:text-3xl text-blue-300 mb-6 font-light"
-          >
+          <h2 className="text-2xl md:text-3xl text-blue-300 mb-6 font-light animate-fade-in-delay-1">
             {data.subtitle}
-          </motion.h2>
+          </h2>
           
           {/* Descripción */}
-          <motion.p 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-lg md:text-xl mb-12 max-w-3xl mx-auto leading-relaxed"
-          >
+          <p className="text-lg md:text-xl mb-12 max-w-3xl mx-auto leading-relaxed animate-fade-in-delay-2">
             {data.description}
-          </motion.p>
+          </p>
           
           {/* Estadísticas */}
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12"
-          >
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12 animate-fade-in-delay-3">
             <div className="text-center">
               <div className="text-3xl md:text-4xl font-bold text-blue-300">{data.stats.years}</div>
               <div className="text-sm md:text-base">Años de Experiencia</div>
@@ -81,34 +59,25 @@ export default function Hero({ data }) {
               <div className="text-3xl md:text-4xl font-bold text-blue-300">{data.stats.countries}</div>
               <div className="text-sm md:text-base">Países</div>
             </div>
-          </motion.div>
+          </div>
           
           {/* CTAs */}
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            className="flex gap-6 justify-center flex-wrap"
-          >
-            <button className="bg-blue-600 hover:bg-blue-700 text-white px-10 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
+          <div className="flex gap-6 justify-center flex-wrap animate-fade-in-delay-4">
+            <button className="btn-primary">
               {data.ctaPrimary}
             </button>
-            <button className="border-2 border-blue-300 text-blue-300 hover:bg-blue-300 hover:text-white px-10 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105">
+            <button className="btn-secondary">
               {data.ctaSecondary}
             </button>
-          </motion.div>
+          </div>
         </div>
       </div>
       
       {/* Elementos decorativos */}
       <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2">
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-          className="w-6 h-10 border-2 border-white rounded-full flex justify-center"
-        >
+        <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center animate-bounce">
           <div className="w-1 h-3 bg-white rounded-full mt-2"></div>
-        </motion.div>
+        </div>
       </div>
     </section>
   )
