@@ -15,28 +15,14 @@
 
 export default function Products({ data }) {
   return (
-    <section style={{
-      padding: '5rem 1rem',
-      backgroundColor: '#f8fafc',
-      textAlign: 'center'
-    }}>
-      <div style={{ maxWidth: '80rem', margin: '0 auto' }}>
+    <section className="products-section">
+      <div className="container">
         {/* Título de la sección */}
-        <h2 style={{
-          fontSize: '2.5rem',
-          fontWeight: 'bold',
-          color: '#1f2937',
-          marginBottom: '1rem'
-        }}>
+        <h2>
           {data.title}
         </h2>
         
-        <h3 style={{
-          fontSize: '3rem',
-          fontWeight: 'bold',
-          color: '#1f2937',
-          marginBottom: '2rem'
-        }}>
+        <h3>
           {data.subtitle}
         </h3>
         

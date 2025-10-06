@@ -117,7 +117,7 @@ export default function Header({ data }) {
           </div>
 
           {/* Navegación Desktop */}
-          <nav style={{ display: 'flex', gap: '2rem' }}>
+          <nav className="header-desktop-nav" style={{ display: 'flex', gap: '2rem' }}>
             {data.navigation.map((item, index) => (
               <a
                 key={item.name}
@@ -152,8 +152,8 @@ export default function Header({ data }) {
             ))}
           </nav>
 
-          {/* CTA Button */}
-          <div>
+          {/* CTA Button Desktop */}
+          <div className="header-desktop-cta">
             <button style={{
               backgroundColor: '#2563eb',
               color: 'white',
@@ -177,6 +177,59 @@ export default function Header({ data }) {
               {data.cta.text}
             </button>
           </div>
+
+          {/* Mobile menu button */}
+          <button
+            className="header-mobile-menu"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            style={{
+              backgroundColor: 'transparent',
+              border: 'none',
+              cursor: 'pointer',
+              padding: '0.5rem'
+            }}
+          >
+            <svg style={{ width: '1.5rem', height: '1.5rem', color: '#374151' }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              {isMenuOpen ? (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              ) : (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              )}
+            </svg>
+          </button>
+        </div>
+
+        {/* Mobile Menu */}
+        {isMenuOpen && (
+          <div className="mobile-menu">
+            {data.navigation.map((item, index) => (
+              <a
+                key={item.name}
+                href={item.href}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {item.name}
+              </a>
+            ))}
+            <div style={{ padding: '0.75rem 0', borderTop: '1px solid #e5e7eb', marginTop: '0.5rem' }}>
+              <button style={{
+                backgroundColor: '#2563eb',
+                color: 'white',
+                padding: '0.75rem 1.5rem',
+                borderRadius: '0.5rem',
+                fontWeight: '600',
+                border: 'none',
+                cursor: 'pointer',
+                width: '100%',
+                transition: 'all 0.3s ease'
+              }}
+              onClick={() => setIsMenuOpen(false)}
+              >
+                {data.cta.text}
+              </button>
+            </div>
+          </div>
+        )}
         </div>
       </div>
     </header>

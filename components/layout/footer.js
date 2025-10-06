@@ -15,12 +15,8 @@
 
 export default function Footer({ data }) {
   return (
-    <footer style={{
-      backgroundColor: '#1f2937',
-      color: 'white',
-      padding: '3rem 1rem 1rem'
-    }}>
-      <div style={{ maxWidth: '80rem', margin: '0 auto' }}>
+    <footer className="footer-section">
+      <div className="footer-container">
         
         {/* Contenido principal del footer */}
         <div style={{

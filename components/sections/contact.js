@@ -36,11 +36,8 @@ export default function Contact({ data }) {
   }
 
   return (
-    <section style={{
-      padding: '5rem 1rem',
-      backgroundColor: 'white'
-    }}>
-      <div style={{ maxWidth: '80rem', margin: '0 auto' }}>
+    <section className="contact-section">
+      <div className="contact-container">
         {/* Título de la sección */}
         <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
           <h2 style={{
