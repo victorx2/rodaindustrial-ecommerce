@@ -45,15 +45,6 @@ body {
   transform: scale(1.05);
 }
 
-.section-padding {
-  padding: 4rem 1rem;
-}
-
-.container-max {
-  max-width: 80rem;
-  margin: 0 auto;
-}
-
 /* Animaciones personalizadas */
 .animate-fade-in {
   animation: fadeIn 0.8s ease-in-out;
