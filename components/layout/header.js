@@ -230,7 +230,6 @@ export default function Header({ data }) {
             </div>
           </div>
         )}
-        </div>
       </div>
     </header>
   )
