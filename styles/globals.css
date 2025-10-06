@@ -1,27 +1,168 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-/* Estilos personalizados para FSKG */
+/* Estilos básicos para FSKG - Sin Tailwind CSS */
 html {
   font-family: 'Inter', system-ui, sans-serif;
 }
 
 body {
+  margin: 0;
+  padding: 0;
   background-color: #f9fafb;
   color: #111827;
 }
 
-/* Componentes personalizados */
+/* Header Styles */
+.header-top {
+  background-color: #1f2937;
+  color: white;
+  padding: 0.5rem 0;
+  font-size: 0.875rem;
+}
+
+.header-main {
+  background-color: white;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.container {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.flex {
+  display: flex;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.py-4 {
+  padding: 1rem 0;
+}
+
+.logo {
+  width: 3rem;
+  height: 3rem;
+  background-color: #2563eb;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+
+.company-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #111827;
+  margin-left: 0.75rem;
+}
+
+.company-tagline {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+/* Hero Section */
+.hero-section {
+  position: relative;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1f2937 0%, #1e40af 50%, #1f2937 100%);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  color: white;
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.hero-title {
+  font-size: 4.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  letter-spacing: -0.025em;
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  color: #93c5fd;
+  margin-bottom: 1.5rem;
+  font-weight: 300;
+}
+
+.hero-description {
+  font-size: 1.125rem;
+  margin-bottom: 3rem;
+  max-width: 48rem;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.75;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-number {
+  font-size: 2.25rem;
+  font-weight: bold;
+  color: #93c5fd;
+}
+
+.stat-label {
+  font-size: 0.875rem;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
 .btn-primary {
   background-color: #2563eb;
   color: white;
-  padding: 0.75rem 1.5rem;
+  padding: 1rem 2.5rem;
   border-radius: 0.5rem;
   font-weight: 600;
+  font-size: 1.125rem;
   transition: all 0.3s ease;
   transform: scale(1);
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  border: none;
+  cursor: pointer;
 }
 
 .btn-primary:hover {
@@ -32,11 +173,14 @@ body {
 .btn-secondary {
   border: 2px solid #93c5fd;
   color: #93c5fd;
-  padding: 0.75rem 1.5rem;
+  padding: 1rem 2.5rem;
   border-radius: 0.5rem;
   font-weight: 600;
+  font-size: 1.125rem;
   transition: all 0.3s ease;
   transform: scale(1);
+  background: transparent;
+  cursor: pointer;
 }
 
 .btn-secondary:hover {
@@ -45,35 +189,70 @@ body {
   transform: scale(1.05);
 }
 
-/* Animaciones personalizadas */
-.animate-fade-in {
-  animation: fadeIn 0.8s ease-in-out;
+.scroll-indicator {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1.5rem;
+  height: 2.5rem;
+  border: 2px solid white;
+  border-radius: 9999px;
+  display: flex;
+  justify-content: center;
+  animation: bounce 2s infinite;
 }
 
-.animate-fade-in-delay-1 {
-  animation: fadeIn 0.8s ease-in-out 0.2s both;
+.scroll-dot {
+  width: 0.25rem;
+  height: 0.75rem;
+  background-color: white;
+  border-radius: 9999px;
+  margin-top: 0.5rem;
 }
 
-.animate-fade-in-delay-2 {
-  animation: fadeIn 0.8s ease-in-out 0.4s both;
-}
+@keyframes bounce {
 
-.animate-fade-in-delay-3 {
-  animation: fadeIn 0.8s ease-in-out 0.6s both;
-}
-
-.animate-fade-in-delay-4 {
-  animation: fadeIn 0.8s ease-in-out 0.8s both;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateX(-50%) translateY(0);
   }
 
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  40% {
+    transform: translateX(-50%) translateY(10px);
+  }
+
+  60% {
+    transform: translateX(-50%) translateY(5px);
+  }
+}
+
+/* Responsive */
+@media (min-width: 768px) {
+  .hero-title {
+    font-size: 6rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.875rem;
+  }
+
+  .hero-description {
+    font-size: 1.25rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .stat-number {
+    font-size: 2.5rem;
+  }
+
+  .stat-label {
+    font-size: 1rem;
   }
 }

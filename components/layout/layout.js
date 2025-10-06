@@ -18,9 +18,8 @@ import { headerData } from '../../lib/headerdata'
 
 export default function Layout({ children }) {
   return (
-    <div className="min-h-screen bg-gray-50">
-      <Header data={headerData} />
-      <main className="flex-1">
+    <div style={{ minHeight: '100vh', backgroundColor: '#f9fafb' }}>
+      <main>
         {children}
       </main>
     </div>
