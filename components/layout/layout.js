@@ -13,14 +13,16 @@
  * Props: children, title, description, keywords
  */
 
-export default function Layout({ children, title, description, keywords }) {
+import Header from './header'
+import { headerData } from '../../lib/headerdata'
+
+export default function Layout({ children }) {
   return (
-    <div className="app-layout">
-      <Header />
-      <main className="main-content">
+    <div className="min-h-screen bg-gray-50">
+      <Header data={headerData} />
+      <main className="flex-1">
         {children}
       </main>
-      <Footer />
     </div>
-  );
+  )
 }

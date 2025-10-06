@@ -1,14 +1,14 @@
 /* 
   # Controlador (Controller) 
-
 */
-
+// pages/index.js - Controlador principal
+import Layout from '../components/layout/layout'
 import Hero from '../components/sections/hero'
 import { heroData } from '../lib/herodata'
 
 export default function Home() {
   return (
-    <div className="min-h-screen">
+    <Layout>
       {/* Hero Section - Sección principal */}
       <Hero data={heroData} />
       
@@ -23,6 +23,6 @@ export default function Home() {
           </p>
         </div>
       </div>
-    </div>
+    </Layout>
   )
 }
