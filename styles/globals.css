@@ -26,6 +26,44 @@ body {
   z-index: 50;
 }
 
+/* Responsive Header */
+@media (max-width: 768px) {
+  .desktop-nav {
+    display: none !important;
+  }
+
+  .desktop-cta {
+    display: none !important;
+  }
+
+  .mobile-menu-btn {
+    display: block;
+  }
+
+  .mobile-menu {
+    border-top: 1px solid #e5e7eb;
+    background-color: white;
+  }
+}
+
+@media (min-width: 769px) {
+  .desktop-nav {
+    display: flex !important;
+  }
+
+  .desktop-cta {
+    display: block;
+  }
+
+  .mobile-menu-btn {
+    display: none;
+  }
+
+  .mobile-menu {
+    display: none;
+  }
+}
+
 .container {
   max-width: 80rem;
   margin: 0 auto;
