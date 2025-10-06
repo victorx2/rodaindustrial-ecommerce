@@ -60,11 +60,38 @@ export default function Hero({ data }) {
         </div>
         
         {/* CTAs */}
-        <div className="cta-buttons">
-          <button className="btn-primary">
+        <div className="cta-buttons" style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '1rem',
+          justifyContent: 'center',
+          alignItems: 'center',
+          width: '100%'
+        }}>
+          <button className="btn-primary" style={{
+            width: '100%',
+            padding: '0.875rem 1.5rem',
+            fontSize: '1rem',
+            backgroundColor: '#2563eb',
+            color: 'white',
+            border: 'none',
+            borderRadius: '0.5rem',
+            fontWeight: '600',
+            cursor: 'pointer'
+          }}>
             {data.ctaPrimary}
           </button>
-          <button className="btn-secondary">
+          <button className="btn-secondary" style={{
+            width: '100%',
+            padding: '0.875rem 1.5rem',
+            fontSize: '1rem',
+            backgroundColor: 'transparent',
+            color: '#93c5fd',
+            border: '2px solid #93c5fd',
+            borderRadius: '0.5rem',
+            fontWeight: '600',
+            cursor: 'pointer'
+          }}>
             {data.ctaSecondary}
           </button>
         </div>

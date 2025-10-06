@@ -14,10 +14,22 @@
  */
 
 // components/layout/header.js - Vista (siguiendo MVC de Vic Dev)
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 export default function Header({ data }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 767)
+    }
+    
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
 
   return (
     <header style={{ 
@@ -117,7 +129,11 @@ export default function Header({ data }) {
           </div>
 
           {/* Navegación Desktop */}
-          <nav className="header-desktop-nav">
+          {!isMobile && (
+            <nav className="header-desktop-nav" style={{ 
+              display: 'flex',
+              gap: '2rem'
+            }}>
             {data.navigation.map((item, index) => (
               <a
                 key={item.name}
@@ -132,20 +148,30 @@ export default function Header({ data }) {
                 )}
               </a>
             ))}
-          </nav>
+            </nav>
+          )}
 
           {/* CTA Button Desktop */}
-          <div className="header-desktop-cta">
-            <button className="btn-primary">
-              {data.cta.text}
-            </button>
-          </div>
+          {!isMobile && (
+            <div className="header-desktop-cta">
+              <button className="btn-primary">
+                {data.cta.text}
+              </button>
+            </div>
+          )}
 
           {/* Mobile menu button */}
-          <button
-            className="header-mobile-menu"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
+          {isMobile && (
+            <button
+              className="header-mobile-menu"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              style={{
+                backgroundColor: 'transparent',
+                border: 'none',
+                cursor: 'pointer',
+                padding: '0.5rem'
+              }}
+            >
             <svg style={{ width: '1.5rem', height: '1.5rem', color: '#374151' }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
               {isMenuOpen ? (
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -153,11 +179,12 @@ export default function Header({ data }) {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
               )}
             </svg>
-          </button>
+            </button>
+          )}
         </div>
 
         {/* Mobile Menu */}
-        {isMenuOpen && (
+        {isMobile && isMenuOpen && (
           <div className="mobile-menu">
             {data.navigation.map((item, index) => (
               <a

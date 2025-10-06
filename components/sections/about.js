@@ -45,14 +45,46 @@ export default function About({ data }) {
           </button>
           
           {/* Galería de imágenes */}
-          <div className="image-grid">
-            <div className="image-placeholder">
+          <div className="image-grid" style={{
+            display: 'grid',
+            gridTemplateColumns: '1fr',
+            gap: '1rem',
+            marginTop: '2rem'
+          }}>
+            <div className="image-placeholder" style={{
+              backgroundColor: '#f3f4f6',
+              height: '150px',
+              borderRadius: '0.5rem',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              color: '#6b7280',
+              fontSize: '0.875rem'
+            }}>
               Imagen de la Empresa
             </div>
-            <div className="image-placeholder">
+            <div className="image-placeholder" style={{
+              backgroundColor: '#f3f4f6',
+              height: '150px',
+              borderRadius: '0.5rem',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              color: '#6b7280',
+              fontSize: '0.875rem'
+            }}>
               Instalaciones FSKG
             </div>
-            <div className="image-placeholder">
+            <div className="image-placeholder" style={{
+              backgroundColor: '#f3f4f6',
+              height: '150px',
+              borderRadius: '0.5rem',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              color: '#6b7280',
+              fontSize: '0.875rem'
+            }}>
               Proceso de Fabricación
             </div>
           </div>
