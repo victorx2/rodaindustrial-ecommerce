@@ -117,30 +117,12 @@ export default function Header({ data }) {
           </div>
 
           {/* Navegación Desktop */}
-          <nav className="header-desktop-nav" style={{ display: 'flex', gap: '2rem' }}>
+          <nav className="header-desktop-nav">
             {data.navigation.map((item, index) => (
               <a
                 key={item.name}
                 href={item.href}
-                style={{
-                  color: item.active ? '#2563eb' : '#374151',
-                  padding: '0.5rem 0.75rem',
-                  fontSize: '0.875rem',
-                  fontWeight: '500',
-                  textDecoration: 'none',
-                  borderBottom: item.active ? '2px solid #2563eb' : '2px solid transparent',
-                  transition: 'all 0.2s ease'
-                }}
-                onMouseEnter={(e) => {
-                  if (!item.active) {
-                    e.target.style.color = '#2563eb'
-                  }
-                }}
-                onMouseLeave={(e) => {
-                  if (!item.active) {
-                    e.target.style.color = '#374151'
-                  }
-                }}
+                className={item.active ? 'active' : ''}
               >
                 {item.name}
                 {item.dropdown && (
@@ -154,26 +136,7 @@ export default function Header({ data }) {
 
           {/* CTA Button Desktop */}
           <div className="header-desktop-cta">
-            <button style={{
-              backgroundColor: '#2563eb',
-              color: 'white',
-              padding: '0.5rem 1.5rem',
-              borderRadius: '0.5rem',
-              fontWeight: '600',
-              border: 'none',
-              cursor: 'pointer',
-              transition: 'all 0.3s ease',
-              boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)'
-            }}
-            onMouseEnter={(e) => {
-              e.target.style.backgroundColor = '#1d4ed8'
-              e.target.style.transform = 'scale(1.05)'
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.backgroundColor = '#2563eb'
-              e.target.style.transform = 'scale(1)'
-            }}
-            >
+            <button className="btn-primary">
               {data.cta.text}
             </button>
           </div>
@@ -182,12 +145,6 @@ export default function Header({ data }) {
           <button
             className="header-mobile-menu"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            style={{
-              backgroundColor: 'transparent',
-              border: 'none',
-              cursor: 'pointer',
-              padding: '0.5rem'
-            }}
           >
             <svg style={{ width: '1.5rem', height: '1.5rem', color: '#374151' }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
               {isMenuOpen ? (
