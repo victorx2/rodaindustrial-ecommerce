@@ -19,92 +19,48 @@ export default function Footer({ data }) {
       <div className="footer-container">
         
         {/* Contenido principal del footer */}
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-          gap: '2rem',
-          marginBottom: '2rem'
-        }}>
+        <div className="footer-main-content">
           
           {/* Información de la empresa */}
-          <div>
-            <div style={{
-              display: 'flex',
-              alignItems: 'center',
-              marginBottom: '1rem'
-            }}>
-              <div style={{
-                width: '2.5rem',
-                height: '2.5rem',
-                backgroundColor: '#2563eb',
-                borderRadius: '50%',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                marginRight: '0.75rem'
-              }}>
-                <span style={{ color: 'white', fontWeight: 'bold', fontSize: '1.125rem' }}>F</span>
+          <div className="footer-brand">
+            <div className="footer-logo-section">
+              <div className="footer-logo">
+                <span className="footer-logo-text">F</span>
               </div>
-              <h3 style={{
-                fontSize: '1.25rem',
-                fontWeight: 'bold',
-                margin: 0
-              }}>
+              <h3 className="footer-brand-title">
                 FSKG
               </h3>
             </div>
             
-            <p style={{
-              fontSize: '0.875rem',
-              color: '#d1d5db',
-              lineHeight: '1.6',
-              marginBottom: '1rem'
-            }}>
+            <p className="footer-description">
               {data.company.description}
             </p>
             
-            <div style={{ fontSize: '0.875rem', color: '#d1d5db' }}>
-              <div style={{ marginBottom: '0.5rem' }}>
+            <div className="footer-contact-info">
+              <div className="footer-contact-item">
                 📍 {data.company.address}
               </div>
-              <div style={{ marginBottom: '0.5rem' }}>
+              <div className="footer-contact-item">
                 📞 {data.company.phone}
               </div>
-              <div style={{ marginBottom: '0.5rem' }}>
+              <div className="footer-contact-item">
                 📧 {data.company.email}
               </div>
-              <div>
+              <div className="footer-contact-item">
                 📠 {data.company.fax}
               </div>
             </div>
           </div>
 
           {/* Enlaces de productos */}
-          <div>
-            <h4 style={{
-              fontSize: '1rem',
-              fontWeight: '600',
-              marginBottom: '1rem',
-              color: '#e5e7eb'
-            }}>
+          <div className="footer-links-section">
+            <h4 className="footer-links-title">
               Productos
             </h4>
-            <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+            <ul className="footer-links-list">
               {data.links.products.map((link, index) => (
-                <li key={index} style={{ marginBottom: '0.5rem' }}>
-                  <a href={link.href} style={{
-                    color: '#d1d5db',
-                    textDecoration: 'none',
-                    fontSize: '0.875rem',
-                    transition: 'color 0.3s ease'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.target.style.color = '#60a5fa'
-                  }}
-                  onMouseLeave={(e) => {
-                    e.target.style.color = '#d1d5db'
-                  }}
-                  >
+                <li key={index} className="footer-links-item">
+                  <a href={link.href} className="footer-link">
                     {link.name}
                   </a>
                 </li>
@@ -113,31 +69,14 @@ export default function Footer({ data }) {
           </div>
 
           {/* Enlaces de empresa */}
-          <div>
-            <h4 style={{
-              fontSize: '1rem',
-              fontWeight: '600',
-              marginBottom: '1rem',
-              color: '#e5e7eb'
-            }}>
+          <div className="footer-links-section">
+            <h4 className="footer-links-title">
               Empresa
             </h4>
-            <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+            <ul className="footer-links-list">
               {data.links.company.map((link, index) => (
-                <li key={index} style={{ marginBottom: '0.5rem' }}>
-                  <a href={link.href} style={{
-                    color: '#d1d5db',
-                    textDecoration: 'none',
-                    fontSize: '0.875rem',
-                    transition: 'color 0.3s ease'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.target.style.color = '#60a5fa'
-                  }}
-                  onMouseLeave={(e) => {
-                    e.target.style.color = '#d1d5db'
-                  }}
-                  >
+                <li key={index} className="footer-links-item">
+                  <a href={link.href} className="footer-link">
                     {link.name}
                   </a>
                 </li>
@@ -146,31 +85,14 @@ export default function Footer({ data }) {
           </div>
 
           {/* Enlaces de soporte */}
-          <div>
-            <h4 style={{
-              fontSize: '1rem',
-              fontWeight: '600',
-              marginBottom: '1rem',
-              color: '#e5e7eb'
-            }}>
+          <div className="footer-links-section">
+            <h4 className="footer-links-title">
               Soporte
             </h4>
-            <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+            <ul className="footer-links-list">
               {data.links.support.map((link, index) => (
-                <li key={index} style={{ marginBottom: '0.5rem' }}>
-                  <a href={link.href} style={{
-                    color: '#d1d5db',
-                    textDecoration: 'none',
-                    fontSize: '0.875rem',
-                    transition: 'color 0.3s ease'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.target.style.color = '#60a5fa'
-                  }}
-                  onMouseLeave={(e) => {
-                    e.target.style.color = '#d1d5db'
-                  }}
-                  >
+                <li key={index} className="footer-links-item">
+                  <a href={link.href} className="footer-link">
                     {link.name}
                   </a>
                 </li>
@@ -180,27 +102,10 @@ export default function Footer({ data }) {
         </div>
 
         {/* Certificaciones */}
-        <div style={{
-          borderTop: '1px solid #374151',
-          borderBottom: '1px solid #374151',
-          padding: '1.5rem 0',
-          marginBottom: '1.5rem'
-        }}>
-          <div style={{
-            display: 'flex',
-            justifyContent: 'center',
-            gap: '1rem',
-            flexWrap: 'wrap'
-          }}>
+        <div className="footer-certifications">
+          <div className="footer-certifications-grid">
             {data.certifications.map((cert, index) => (
-              <div key={index} style={{
-                backgroundColor: '#374151',
-                color: '#e5e7eb',
-                padding: '0.5rem 1rem',
-                borderRadius: '0.5rem',
-                fontSize: '0.875rem',
-                fontWeight: '600'
-              }}>
+              <div key={index} className="footer-certification-badge">
                 {cert}
               </div>
             ))}
@@ -208,39 +113,16 @@ export default function Footer({ data }) {
         </div>
 
         {/* Redes sociales y copyright */}
-        <div style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          flexWrap: 'wrap',
-          gap: '1rem'
-        }}>
+        <div className="footer-bottom">
           {/* Redes sociales */}
-          <div style={{
-            display: 'flex',
-            gap: '1rem'
-          }}>
+          <div className="footer-social-links">
             {data.social.map((social, index) => (
               <a
                 key={index}
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.5rem',
-                  color: '#d1d5db',
-                  textDecoration: 'none',
-                  fontSize: '0.875rem',
-                  transition: 'color 0.3s ease'
-                }}
-                onMouseEnter={(e) => {
-                  e.target.style.color = '#60a5fa'
-                }}
-                onMouseLeave={(e) => {
-                  e.target.style.color = '#d1d5db'
-                }}
+                className="footer-social-link"
               >
                 <span>{social.icon}</span>
                 <span>{social.name}</span>
@@ -249,11 +131,7 @@ export default function Footer({ data }) {
           </div>
 
           {/* Copyright */}
-          <div style={{
-            fontSize: '0.875rem',
-            color: '#9ca3af',
-            textAlign: 'right'
-          }}>
+          <div className="footer-copyright">
             {data.copyright}
           </div>
         </div>
