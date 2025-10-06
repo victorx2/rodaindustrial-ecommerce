@@ -15,7 +15,6 @@
 
 // components/layout/header.js - Vista (siguiendo MVC de Vic Dev)
 import { useState } from 'react'
-import { motion } from 'framer-motion'
 
 export default function Header({ data }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
