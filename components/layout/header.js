@@ -8,17 +8,45 @@
  * - Botones de acción (Login, Registro)
  * - Responsive con menú hamburguesa
  * - Sticky header al hacer scroll
- * 
+ * b
  * Uso: Importar en Layout.js como <Header />
  * Props: logo, menuItems, user, onLogin, onRegister
  */
 
 // components/layout/header.js - Vista (siguiendo MVC de Vic Dev)
-import { useState, useEffect } from 'react'
+
+import { useState, useEffect, useMemo } from 'react'
 
 export default function Header({ data }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
+  const [isLanguageOpen, setIsLanguageOpen] = useState(false)
+  const [languageSearchTerm, setLanguageSearchTerm] = useState('')
+
+   // Función para filtrar idiomas
+   const filteredLanguages = useMemo(() => {
+    if (!languageSearchTerm.trim()) {
+      return data?.languages?.available || []
+    }
+    
+    const searchTerm = languageSearchTerm.toLowerCase()
+    
+    return data?.languages?.available?.filter(language => 
+      language.name.toLowerCase().includes(searchTerm) ||
+      language.nativeName.toLowerCase().includes(searchTerm) ||
+      language.code.toLowerCase().includes(searchTerm) ||
+      language.searchTerms.some(term => 
+        term.toLowerCase().includes(searchTerm)
+      )
+    ) || []
+  }, [languageSearchTerm, data?.languages?.available])
+
+  // Función para cambiar idioma
+  const handleLanguageChange = (languageCode) => {
+    setIsLanguageOpen(false)
+    setLanguageSearchTerm('')
+    console.log('Cambiar idioma a:', languageCode)
+  }
 
   useEffect(() => {
     const checkMobile = () => {
@@ -104,6 +132,70 @@ export default function Header({ data }) {
             </nav>
           )}
 
+          {/* ← AGREGAR ESTA SECCIÓN - BUSCADOR DESKTOP */}
+          {!isMobile && (
+            <div className="header-search">
+              <div className="search-container">
+                <input 
+                  type="search" 
+                  className="search-input"
+                  placeholder={data?.search?.placeholder || "Buscar productos..."}
+                />
+                <button className="search-button">
+                  <svg className="search-icon" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          )}
+
+          {/* Selector de idiomas con búsqueda */}
+          <div className="header-language">
+              <div className="language-search-container">
+                <input 
+                  type="text"
+                  className="language-search-input"
+                  placeholder="Buscar idioma..."
+                  value={languageSearchTerm}
+                  onChange={(e) => setLanguageSearchTerm(e.target.value)}
+                  onFocus={() => setIsLanguageOpen(true)}
+                />
+                <button 
+                  className="language-button"
+                  onClick={() => setIsLanguageOpen(!isLanguageOpen)}
+                >
+                  <svg className="language-icon" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM4.332 8.027a6.012 6.012 0 011.912-2.706C6.512 5.73 6.974 6 7.5 6A1.5 1.5 0 019 7.5V8a2 2 0 004 0 2 2 0 011.523-1.943A5.977 5.977 0 0116 10c0 .34-.028.675-.083 1H15a2 2 0 00-2 2v2.197A5.973 5.973 0 0110 16v-2a2 2 0 00-2-2 2 2 0 01-2-2 2 2 0 00-1.668-1.973z" clipRule="evenodd" />
+                  </svg>
+                </button>
+              </div>
+              
+              {/* Menú desplegable con resultados filtrados */}
+              {isLanguageOpen && (
+                <div className="language-dropdown">
+                  {filteredLanguages.map((language) => (
+                    <button
+                      key={language.code}
+                      className={`language-option ${data.languages.current === language.code ? 'active' : ''}`}
+                      onClick={() => handleLanguageChange(language.code)}
+                    >
+                      <span className="language-flag">{language.flag}</span>
+                      <span className="language-name">{language.name}</span>
+                      <span className="language-native">({language.nativeName})</span>
+                    </button>
+                  ))}
+                  
+                  {/* Mensaje si no hay resultados */}
+                  {filteredLanguages.length === 0 && (
+                    <div className="language-no-results">
+                      No se encontraron idiomas
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+
           {/* CTA Button Desktop */}
           {!isMobile && (
             <div className="header-desktop-cta">
@@ -130,9 +222,25 @@ export default function Header({ data }) {
           )}
         </div>
 
-        {/* Mobile Menu */}
-        {isMobile && isMenuOpen && (
+               {/* Mobile Menu */}
+               {isMobile && isMenuOpen && (
           <div className="mobile-menu">
+            {/* ← AGREGAR BUSCADOR MÓVIL */}
+            <div className="mobile-search">
+              <div className="search-container">
+                <input 
+                  type="search" 
+                  className="search-input"
+                  placeholder={data?.search?.placeholder || "Buscar productos..."}
+                />
+                <button className="search-button">
+                  <svg className="search-icon" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+            
             {data?.navigation?.map((item, index) => (
               <a
                 key={item.name}
@@ -142,6 +250,45 @@ export default function Header({ data }) {
                 {item.name}
               </a>
             ))}
+ <div className="mobile-language">
+              <h4 className="mobile-language-title">Idioma</h4>
+              <div className="mobile-language-search">
+                <input 
+                  type="text"
+                  className="mobile-language-search-input"
+                  placeholder="Buscar idioma..."
+                  value={languageSearchTerm}
+                  onChange={(e) => setLanguageSearchTerm(e.target.value)}
+                />
+              </div>
+              <div className="mobile-language-options">
+                {filteredLanguages.map((language) => (
+                  <button
+                    key={language.code}
+                    className={`mobile-language-option ${data.languages.current === language.code ? 'active' : ''}`}
+                    onClick={() => {
+                      handleLanguageChange(language.code)
+                      setIsMenuOpen(false)
+                    }}
+                  >
+                    <span className="language-flag">{language.flag}</span>
+                    <span className="language-name">{language.name}</span>
+                    <span className="language-native">({language.nativeName})</span>
+                  </button>
+                ))}
+                
+                {/* Mensaje si no hay resultados */}
+                {filteredLanguages.length === 0 && (
+                  <div className="mobile-language-no-results">
+                    No se encontraron idiomas
+                  </div>
+                )}
+              </div>
+            </div>
+
+
+
+
             <div className="mobile-menu-cta">
               <button className="btn-primary mobile-cta-button"
                 onClick={() => setIsMenuOpen(false)}

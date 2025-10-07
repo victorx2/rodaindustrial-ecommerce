@@ -15,6 +15,7 @@
 *::after {
   box-sizing: border-box;
 }
+
 html {
   font-family: 'Inter', system-ui, sans-serif;
   scroll-behavior: smooth;
@@ -411,6 +412,87 @@ body {
   color: #6b7280;
   font-size: 1.125rem;
 }
+
+/* ========================================
+   BUSCADOR HEADER
+   ======================================== */
+
+.header-search {
+  flex: 1;
+  max-width: 300px;
+  margin: 0 1rem;
+}
+
+.search-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.5rem 2.5rem 0.5rem 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  background-color: white;
+  transition: border-color 0.2s ease;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.search-button {
+  position: absolute;
+  right: 0.5rem;
+  padding: 0.25rem;
+  background: none;
+  border: none;
+  color: #6b7280;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.search-button:hover {
+  color: #2563eb;
+}
+
+.search-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* Mobile Search */
+.mobile-search {
+  padding: 1rem;
+  border-bottom: 1px solid #e5e7eb;
+  margin-bottom: 1rem;
+}
+
+.mobile-search .search-container {
+  max-width: none;
+}
+
+.mobile-search .search-input {
+  font-size: 1rem;
+  padding: 0.75rem 2.5rem 0.75rem 0.75rem;
+}
+
+
+/* .header-languages { */
+/*   display: flex; */
+/*   gap: 1rem; */
+/* } */
+/*  */
+/* .header-languages a { */
+/*   color: #374151; */
+/*   text-decoration: none; */
+/* } */
+
+
 
 /* ========================================
    6. CONTACT SECTION
@@ -1472,5 +1554,267 @@ body {
   .hero-cta-primary,
   .hero-cta-secondary {
     width: auto;
+  }
+}
+
+/* ========================================
+   SELECTOR DE IDIOMAS CON BÚSQUEDA
+   ======================================== */
+
+.header-language {
+  position: relative;
+  margin-left: 1rem;
+}
+
+.language-search-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.language-search-input {
+  width: 200px;
+  padding: 0.5rem 2.5rem 0.5rem 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  background-color: white;
+  transition: border-color 0.2s ease;
+}
+
+.language-search-input:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.language-button {
+  position: absolute;
+  right: 0.5rem;
+  padding: 0.25rem;
+  background: none;
+  border: none;
+  color: #6b7280;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  border-radius: 0.25rem;
+}
+
+.language-button:hover {
+  color: #2563eb;
+  background-color: #f3f4f6;
+}
+
+.language-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.language-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  z-index: 50;
+  min-width: 250px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.language-option {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.language-option:hover {
+  background-color: #f9fafb;
+}
+
+.language-option.active {
+  background-color: #eff6ff;
+  color: #2563eb;
+}
+
+.language-flag {
+  font-size: 1.25rem;
+  margin-right: 0.75rem;
+}
+
+.language-name {
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-right: 0.5rem;
+}
+
+.language-native {
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+
+.language-no-results {
+  padding: 1rem;
+  text-align: center;
+  color: #6b7280;
+  font-size: 0.875rem;
+}
+
+/* Mobile Language Selector */
+.mobile-language {
+  padding: 1rem;
+  border-bottom: 1px solid #e5e7eb;
+  margin-bottom: 1rem;
+}
+
+.mobile-language-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 0.75rem;
+}
+
+.mobile-language-search {
+  margin-bottom: 0.75rem;
+}
+
+.mobile-language-search-input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+  font-size: 1rem;
+  background-color: white;
+}
+
+.mobile-language-search-input:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.mobile-language-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.mobile-language-option {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem;
+  background: none;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.mobile-language-option:hover {
+  background-color: #f9fafb;
+  border-color: #d1d5db;
+}
+
+.mobile-language-option.active {
+  background-color: #eff6ff;
+  border-color: #2563eb;
+  color: #2563eb;
+}
+
+.mobile-language-no-results {
+  padding: 1rem;
+  text-align: center;
+  color: #6b7280;
+  font-size: 0.875rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+  .header-language {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
+
+  .language-search-input {
+    width: 120px;
+    font-size: 0.75rem;
+    padding: 0.375rem 2rem 0.375rem 0.5rem;
+  }
+
+  .language-button {
+    right: 0.25rem;
+    padding: 0.125rem;
+  }
+
+  .language-icon {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .language-dropdown {
+    min-width: 200px;
+    right: -0.5rem;
+  }
+
+  .language-option {
+    padding: 0.5rem 0.75rem;
+  }
+
+  .language-name {
+    font-size: 0.75rem;
+  }
+
+  .language-native {
+    font-size: 0.625rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-language {
+    margin-left: 0.25rem;
+    margin-right: 0.25rem;
+  }
+
+  .language-search-input {
+    width: 100px;
+    font-size: 0.625rem;
+    padding: 0.25rem 1.5rem 0.25rem 0.375rem;
+  }
+
+  .language-button {
+    right: 0.125rem;
+    padding: 0.125rem;
+  }
+
+  .language-icon {
+    width: 0.875rem;
+    height: 0.875rem;
+  }
+
+  .language-dropdown {
+    min-width: 180px;
+    right: -0.25rem;
+  }
+
+  .language-option {
+    padding: 0.375rem 0.5rem;
+  }
+
+  .language-name {
+    font-size: 0.625rem;
+  }
+
+  .language-native {
+    font-size: 0.5rem;
   }
 }
