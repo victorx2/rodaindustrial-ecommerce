@@ -1,0 +1,49 @@
+{
+  "company": {
+    "name": "FSKG Industrial Bearings Co., Ltd",
+    "email": "info@fskg.com",
+    "phone": "+86-510-82713083"
+  },
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "products": "Products",
+    "contact": "Contact"
+  },
+  "search": {
+    "placeholder": "Search products...",
+    "buttonText": "Search"
+  },
+  "cta": {
+    "text": "Request Quote"
+  },
+  "languages": {
+    "current": "en",
+    "available": [
+      {
+        "name": "Español",
+        "code": "es",
+        "flag": "🇪🇸",
+        "nativeName": "Español",
+        "searchTerms": [
+          "español",
+          "spanish",
+          "españo",
+          "esp"
+        ]
+      },
+      {
+        "name": "English",
+        "code": "en",
+        "flag": "🇺🇸",
+        "nativeName": "English",
+        "searchTerms": [
+          "english",
+          "inglés",
+          "eng",
+          "en"
+        ]
+      }
+    ]
+  }
+}

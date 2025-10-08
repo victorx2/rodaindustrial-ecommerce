@@ -1,0 +1,97 @@
+{
+  "company": {
+    "name": "FSKG Industrial Bearings Co., Ltd",
+    "email": "info@fskg.com",
+    "phone": "+86-510-82713083"
+  },
+  "navigation": {
+    "home": "Início",
+    "about": "Sobre nós",
+    "products": "Produtos",
+    "contact": "Contato"
+  },
+  "search": {
+    "placeholder": "Pesquisar produtos...",
+    "buttonText": "Pesquisar"
+  },
+  "cta": {
+    "text": "Solicitar orçamento"
+  },
+  "languages": {
+    "current": "pt",
+    "available": [
+      {
+        "name": "Español",
+        "code": "es",
+        "flag": "🇪🇸",
+        "nativeName": "Español",
+        "searchTerms": [
+          "español",
+          "spanish",
+          "españo",
+          "esp"
+        ]
+      },
+      {
+        "name": "English",
+        "code": "en",
+        "flag": "🇺🇸",
+        "nativeName": "English",
+        "searchTerms": [
+          "english",
+          "inglés",
+          "eng",
+          "en"
+        ]
+      },
+      {
+        "name": "Français",
+        "code": "fr",
+        "flag": "🇫🇷",
+        "nativeName": "Français",
+        "searchTerms": [
+          "français",
+          "french",
+          "fran",
+          "fr"
+        ]
+      },
+      {
+        "name": "Deutsch",
+        "code": "de",
+        "flag": "🇩🇪",
+        "nativeName": "Deutsch",
+        "searchTerms": [
+          "deutsch",
+          "german",
+          "deut",
+          "de"
+        ]
+      },
+      {
+        "name": "Italiano",
+        "code": "it",
+        "flag": "🇮🇹",
+        "nativeName": "Italiano",
+        "searchTerms": [
+          "italiano",
+          "italian",
+          "ital",
+          "it"
+        ]
+      },
+      {
+        "name": "Português",
+        "code": "pt",
+        "flag": "🇵🇹",
+        "nativeName": "Português",
+        "searchTerms": [
+          "português",
+          "portuguese",
+          "port",
+          "pt"
+        ]
+      }
+    ]
+  }
+}

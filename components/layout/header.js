@@ -15,23 +15,31 @@
 
 // components/layout/header.js - Vista (siguiendo MVC de Vic Dev)
 
+import { useRouter } from 'next/router'
 import { useState, useEffect, useMemo } from 'react'
+import { useTranslations } from '../../hooks/useTranslations'
 
-export default function Header({ data }) {
+
+
+export default function Header() {
+  const router = useRouter()
+  const { locale } = router
+  const t = useTranslations('header')  // ← HOOK OPTIMIZADO PARA PRODUCCIÓN
+
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
   const [isLanguageOpen, setIsLanguageOpen] = useState(false)
   const [languageSearchTerm, setLanguageSearchTerm] = useState('')
 
-   // Función para filtrar idiomas
-   const filteredLanguages = useMemo(() => {
+  // Función para filtrar idiomas
+  const filteredLanguages = useMemo(() => {
     if (!languageSearchTerm.trim()) {
-      return data?.languages?.available || []
+      return t?.languages?.available || []
     }
     
     const searchTerm = languageSearchTerm.toLowerCase()
     
-    return data?.languages?.available?.filter(language => 
+    return t?.languages?.available?.filter(language => 
       language.name.toLowerCase().includes(searchTerm) ||
       language.nativeName.toLowerCase().includes(searchTerm) ||
       language.code.toLowerCase().includes(searchTerm) ||
@@ -39,13 +47,13 @@ export default function Header({ data }) {
         term.toLowerCase().includes(searchTerm)
       )
     ) || []
-  }, [languageSearchTerm, data?.languages?.available])
+  }, [languageSearchTerm, t?.languages?.available])
 
   // Función para cambiar idioma
   const handleLanguageChange = (languageCode) => {
     setIsLanguageOpen(false)
     setLanguageSearchTerm('')
-    console.log('Cambiar idioma a:', languageCode)
+    router.push(router.asPath, router.asPath, { locale: languageCode })
   }
 
   useEffect(() => {
@@ -70,14 +78,14 @@ export default function Header({ data }) {
                 <svg className="header-icon" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
                 </svg>
-                {data.company.fullName}
+                {t.company.name}
               </span>
               <span className="header-contact-item">
                 <svg className="header-icon" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
                   <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
                 </svg>
-                {data.company.email}
+                {t.company.email}
               </span>
             </div>
             <div className="header-contact-right">
@@ -85,7 +93,7 @@ export default function Header({ data }) {
                 <svg className="header-icon" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
                 </svg>
-                {data.company.phone}
+                {t.company.phone}
               </span>
             </div>
           </div>
@@ -104,7 +112,7 @@ export default function Header({ data }) {
             </div>
             <div className="company-info">
               <h1 className="company-name">
-                {data.company.name}
+                {t.company.name}
               </h1>
               <p className="company-tagline">
                 Industrial Bearings
@@ -115,20 +123,11 @@ export default function Header({ data }) {
           {/* Navegación Desktop */}
           {!isMobile && (
             <nav className="header-desktop-nav">
-            {data?.navigation?.map((item, index) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className={item.active ? 'active' : ''}
-              >
-                {item.name}
-                {item.dropdown && (
-                  <svg className="dropdown-icon" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
-                  </svg>
-                )}
-              </a>
-            ))}
+              {Object.entries(t?.navigation || {}).map(([key, value]) => (
+                <a key={key} href={`#${key}`} className="nav-link">
+                  {value}
+                </a>
+              ))}
             </nav>
           )}
 
@@ -139,7 +138,7 @@ export default function Header({ data }) {
                 <input 
                   type="search" 
                   className="search-input"
-                  placeholder={data?.search?.placeholder || "Buscar productos..."}
+                  placeholder={t?.search?.placeholder || "Buscar productos..."}
                 />
                 <button className="search-button">
                   <svg className="search-icon" fill="currentColor" viewBox="0 0 20 20">
@@ -177,7 +176,7 @@ export default function Header({ data }) {
                   {filteredLanguages.map((language) => (
                     <button
                       key={language.code}
-                      className={`language-option ${data.languages.current === language.code ? 'active' : ''}`}
+                      className={`language-option ${t.languages.current === language.code ? 'active' : ''}`}
                       onClick={() => handleLanguageChange(language.code)}
                     >
                       <span className="language-flag">{language.flag}</span>
@@ -200,7 +199,7 @@ export default function Header({ data }) {
           {!isMobile && (
             <div className="header-desktop-cta">
               <button className="btn-primary">
-                {data.cta.text}
+                {t?.cta?.text || "Solicitar Cotización"}
               </button>
             </div>
           )}
@@ -231,7 +230,7 @@ export default function Header({ data }) {
                 <input 
                   type="search" 
                   className="search-input"
-                  placeholder={data?.search?.placeholder || "Buscar productos..."}
+                  placeholder={t?.search?.placeholder || "Buscar productos..."}
                 />
                 <button className="search-button">
                   <svg className="search-icon" fill="currentColor" viewBox="0 0 20 20">
@@ -241,13 +240,13 @@ export default function Header({ data }) {
               </div>
             </div>
             
-            {data?.navigation?.map((item, index) => (
+            {Object.entries(t?.navigation || {}).map(([key, value]) => (
               <a
-                key={item.name}
-                href={item.href}
+                key={key}
+                href={`#${key}`}
                 onClick={() => setIsMenuOpen(false)}
               >
-                {item.name}
+                {value}
               </a>
             ))}
  <div className="mobile-language">
@@ -265,7 +264,7 @@ export default function Header({ data }) {
                 {filteredLanguages.map((language) => (
                   <button
                     key={language.code}
-                    className={`mobile-language-option ${data.languages.current === language.code ? 'active' : ''}`}
+                    className={`mobile-language-option ${t.languages.current === language.code ? 'active' : ''}`}
                     onClick={() => {
                       handleLanguageChange(language.code)
                       setIsMenuOpen(false)
@@ -293,7 +292,7 @@ export default function Header({ data }) {
               <button className="btn-primary mobile-cta-button"
                 onClick={() => setIsMenuOpen(false)}
               >
-                {data.cta.text}
+                {t.cta.text}
               </button>
             </div>
           </div>
