@@ -26,10 +26,13 @@ export default function Header() {
   const { locale } = router
   const t = useTranslations('header')  // ← HOOK OPTIMIZADO PARA PRODUCCIÓN
 
+  // Estados
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
   const [isLanguageOpen, setIsLanguageOpen] = useState(false)
   const [languageSearchTerm, setLanguageSearchTerm] = useState('')
+  const [isSticky, setIsSticky] = useState(false)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false) // ← ESTADO PARA STICKY
 
   // Función para filtrar idiomas
   const filteredLanguages = useMemo(() => {
@@ -56,6 +59,8 @@ export default function Header() {
     router.push(router.asPath, router.asPath, { locale: languageCode })
   }
 
+  // Detectar si es móvil
+
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth <= 767)
@@ -67,8 +72,43 @@ export default function Header() {
     return () => window.removeEventListener('resize', checkMobile)
   }, [])
 
+  // Manejar sticky header ← ESTE ES EL CÓDIGO CLAVE
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop
+      setIsSticky(scrollTop > 10) // ← Más sensible (antes era 50)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  // Función para abrir/cerrar menú móvil
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen)
+  }
+
+  // Función para cerrar menú móvil
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false)
+  }
+
+  // Prevenir scroll del body cuando el menú está abierto
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'unset'
+    }
+    
+    return () => {
+      document.body.style.overflow = 'unset'
+    }
+  }, [isMobileMenuOpen])
+
   return (
-    <header className="header-main">
+    <header className={`header-main ${isSticky ? 'sticky' : ''}`}>
       {/* Barra superior de contacto */}
       <div className="header-top">
         <div className="container">
@@ -118,7 +158,7 @@ export default function Header() {
                 Industrial Bearings
               </p>
             </div>
-          </div>
+            </div>
 
           {/* Navegación Desktop */}
           {!isMobile && (
@@ -127,40 +167,58 @@ export default function Header() {
                 <div key={key} className="nav-item">
                   {navItem.type === 'simple' ? (
                     <a href={`#${key}`} className="nav-link">
-                      {navItem.label}
+                      {typeof navItem.label === 'string' ? navItem.label : navItem.label.label || key}
                     </a>
                   ) : (
                     <div className="nav-dropdown">
                       <a href={`#${key}`} className="nav-link dropdown-toggle">
-                        {navItem.label}
+                        {typeof navItem.label === 'string' ? navItem.label : navItem.label.label || key}
                         <svg className="dropdown-icon" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
-                        </svg>
+                    <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+                  </svg>
                       </a>
                       <div className="dropdown-menu">
                         {Object.entries(navItem.items || {}).map(([subKey, subLabel]) => (
                           <a key={subKey} href={`#${key}/${subKey}`} className="dropdown-item">
-                            {subLabel}
+                            {typeof subLabel === 'string' ? subLabel : subLabel.label || subKey}
                           </a>
                         ))}
                       </div>
                     </div>
                   )}
                 </div>
-              ))}
-            </nav>
+            ))}
+          </nav>
           )}
 
-          {/* ← AGREGAR ESTA SECCIÓN - BUSCADOR DESKTOP */}
-          {!isMobile && (
-            <div className="header-search">
-              <div className="search-container">
+          {/* SEARCH TOGGLE - MOBILE */}
+          {isMobile && (
+            <div className="header-search-form-wrapper mobile-search">
+              <div className="searchBox">
                 <input 
-                  type="search" 
-                  className="search-input"
+                  className="searchInput"
+                  type="text" 
                   placeholder={t?.search?.placeholder || "Buscar productos..."}
                 />
-                <button className="search-button">
+                <button className="searchButton">
+                  <svg className="search-icon" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          )}
+
+          {/* SEARCH TOGGLE - DESKTOP */}
+          {!isMobile && (
+            <div className="header-search-form-wrapper">
+              <div className="searchBox">
+                <input 
+                  className="searchInput"
+                  type="text" 
+                  placeholder={t?.search?.placeholder || "Buscar productos..."}
+                />
+                <button className="searchButton">
                   <svg className="search-icon" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd" />
                   </svg>
@@ -220,103 +278,53 @@ export default function Header() {
             <div className="header-desktop-cta">
               <button className="btn-primary">
                 {t?.cta?.text || "Solicitar Cotización"}
-              </button>
+            </button>
             </div>
           )}
 
-          {/* Mobile menu button */}
+          {/* Botón hamburguesa móvil */}
           {isMobile && (
-            <button
+            <button 
               className="header-mobile-menu"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              onClick={toggleMobileMenu}
             >
-            <svg className="mobile-menu-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              {isMenuOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              )}
-            </svg>
+              <svg className="mobile-menu-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
             </button>
           )}
+
         </div>
 
-               {/* Mobile Menu */}
-               {isMobile && isMenuOpen && (
-          <div className="mobile-menu">
-            {/* ← AGREGAR BUSCADOR MÓVIL */}
-            <div className="mobile-search">
-              <div className="search-container">
-                <input 
-                  type="search" 
-                  className="search-input"
-                  placeholder={t?.search?.placeholder || "Buscar productos..."}
-                />
-                <button className="search-button">
-                  <svg className="search-icon" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd" />
-                  </svg>
-                </button>
-              </div>
-            </div>
-            
-            {Object.entries(t?.navigation || {}).map(([key, value]) => (
-              <a
-                key={key}
-                href={`#${key}`}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {value}
-              </a>
-            ))}
- <div className="mobile-language">
-              <h4 className="mobile-language-title">Idioma</h4>
-              <div className="mobile-language-search">
-                <input 
-                  type="text"
-                  className="mobile-language-search-input"
-                  placeholder="Buscar idioma..."
-                  value={languageSearchTerm}
-                  onChange={(e) => setLanguageSearchTerm(e.target.value)}
-                />
-              </div>
-              <div className="mobile-language-options">
-                {filteredLanguages.map((language) => (
-                  <button
-                    key={language.code}
-                    className={`mobile-language-option ${t.languages.current === language.code ? 'active' : ''}`}
-                    onClick={() => {
-                      handleLanguageChange(language.code)
-                      setIsMenuOpen(false)
-                    }}
-                  >
-                    <span className="language-flag">{language.flag}</span>
-                    <span className="language-name">{language.name}</span>
-                    <span className="language-native">({language.nativeName})</span>
-                  </button>
-                ))}
-                
-                {/* Mensaje si no hay resultados */}
-                {filteredLanguages.length === 0 && (
-                  <div className="mobile-language-no-results">
-                    No se encontraron idiomas
-                  </div>
-                )}
-              </div>
-            </div>
-
-
-
-
-            <div className="mobile-menu-cta">
-              <button className="btn-primary mobile-cta-button"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {t.cta.text}
-              </button>
-            </div>
+      {/* Menú móvil desplegable */}
+      <div className={`mobileMenu ${isMobileMenuOpen ? 'show' : ''}`}>
+        <div className="menu-close">
+          <div className="clox" onClick={closeMobileMenu}>
+            <i className="ti-close">×</i>
           </div>
-        )}
+        </div>
+        
+        <ul className="responsivemenu">
+          {Object.entries(t?.navigation || {}).map(([key, navItem]) => (
+            <li key={key}>
+              {navItem.type === 'simple' ? (
+                <a 
+                  href={`#${key}`} 
+                  className={key === 'home' ? 'active' : ''}
+                  onClick={closeMobileMenu}
+                >
+                  {typeof navItem.label === 'string' ? navItem.label : navItem.label.label || key}
+                </a>
+              ) : (
+                <p>
+                  {typeof navItem.label === 'string' ? navItem.label : navItem.label.label || key}
+                  <i className="fa fa-angle-down"></i>
+                </p>
+              )}
+            </li>
+          ))}
+        </ul>
+      </div>
       </div>
     </header>
   )

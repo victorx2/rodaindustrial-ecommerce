@@ -16,6 +16,7 @@
   box-sizing: border-box;
 }
 
+/* DESPUÉS (FUNCIONA) */
 html {
   font-family: 'Inter', system-ui, sans-serif;
   scroll-behavior: smooth;
@@ -24,7 +25,9 @@ html {
   margin: 0;
   padding: 0;
   width: 100%;
-  overflow-x: hidden;
+  min-height: 100vh;
+  /* ← Altura mínima para scroll */
+  /* overflow-x: hidden; ELIMINADO para que funcione sticky */
 }
 
 body {
@@ -33,8 +36,14 @@ body {
   background-color: white;
   color: #111827;
   width: 100%;
-  overflow-x: hidden;
+  min-height: 100vh;
+  /* ← Altura mínima para scroll */
+  /* overflow-x: hidden; ELIMINADO para que funcione sticky */
+  /* Prevenir scroll horizontal sin interferir con sticky */
+  max-width: 100vw;
+  /* ← Prevenir scroll horizontal */
 }
+
 
 /* ========================================
    2. LAYOUT PRINCIPAL
@@ -48,12 +57,201 @@ body {
 /* ========================================
    3. HEADER STYLES
    ======================================== */
+/* HEADER COMPLETO STICKY - SOLUCIÓN CORREGIDA */
 .header-main {
   background-color: white;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
   position: sticky;
+  /* ← CLAVE: Hace que sea sticky */
   top: 0;
-  z-index: 50;
+  /* ← Se pega en la parte superior */
+  z-index: 1000;
+  /* ← Para estar por encima de otros elementos */
+  transition: all 0.3s ease;
+  /* ← Transición suave */
+  width: 100%;
+  /* Asegurar que el sticky funcione correctamente */
+  will-change: transform;
+  /* ← Optimización de performance */
+  /* Forzar el contexto de stacking */
+  isolation: isolate;
+  /* ← Evita conflictos de z-index */
+}
+
+/* EFECTO STICKY MEJORADO */
+.header-main.sticky {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  background-color: white;
+}
+
+/* EFECTOS STICKY PARA HEADER-MAIN-CONTENT */
+.header-main.sticky .header-main-content {
+  padding: 0.75rem 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* RESPONSIVE STICKY */
+@media screen and (max-width: 768px) {
+  .header-main {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  .header-main.sticky .header-main-content {
+    padding: 0.5rem 0;
+  }
+}
+
+/* ========================================
+   MENÚ MÓVIL RESPONSIVE - DISEÑO COOL
+   ======================================== */
+
+/* Botón hamburguesa */
+.header-mobile-menu {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.header-mobile-menu:hover {
+  background-color: rgba(37, 99, 235, 0.1);
+}
+
+.mobile-menu-icon {
+  width: 24px;
+  height: 24px;
+  color: #2563eb;
+}
+
+/* Menú móvil desplegable */
+.mobileMenu {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+  z-index: 9999;
+  transition: left 0.4s ease;
+  overflow-y: auto;
+}
+
+.mobileMenu.show {
+  left: 0;
+}
+
+/* Header del menú móvil */
+.menu-close {
+  display: flex;
+  justify-content: flex-end;
+  padding: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.clox {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.clox:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.clox i {
+  color: white;
+  font-size: 18px;
+  font-style: normal;
+}
+
+/* Lista del menú */
+.responsivemenu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.responsivemenu li {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.responsivemenu li:last-child {
+  border-bottom: none;
+}
+
+.responsivemenu p,
+.responsivemenu a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  margin: 0;
+}
+
+.responsivemenu p:hover,
+.responsivemenu a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #60a5fa;
+}
+
+.responsivemenu a.active {
+  color: #60a5fa;
+  background-color: rgba(96, 165, 250, 0.1);
+}
+
+/* Iconos de flecha */
+.responsivemenu i.fa-angle-down {
+  font-size: 14px;
+  transition: transform 0.3s ease;
+}
+
+.responsivemenu p:hover i.fa-angle-down {
+  transform: rotate(180deg);
+}
+
+/* Responsive para menú móvil */
+@media screen and (max-width: 768px) {
+  .header-mobile-menu {
+    display: block;
+  }
+
+  .header-desktop-nav {
+    display: none;
+  }
+
+  .header-search-form-wrapper:not(.mobile-search) {
+    display: none;
+  }
+
+  .header-language {
+    display: none;
+  }
+
+  .header-desktop-cta {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .mobileMenu {
+    display: none;
+  }
 }
 
 .header-top {
@@ -61,6 +259,7 @@ body {
   color: white;
   padding: 0.25rem 0;
   font-size: 0.75rem;
+  /* NO sticky - se mantiene con el header-main padre */
 }
 
 .header-contact-info {
@@ -99,6 +298,11 @@ body {
   padding: 0.5rem 0;
   gap: 1rem;
   min-height: 60px;
+  /* NO sticky individual - se mantiene con el header-main */
+  isolation: isolate;
+  contain: layout style;
+  background: white;
+  transition: all 0.3s ease;
 }
 
 .header-logo {
@@ -488,35 +692,225 @@ body {
 }
 
 /* ========================================
-   BUSCADOR HEADER
+   SEARCH HOVER EXPAND - DISEÑO ELEGANTE
    ======================================== */
 
-.header-search {
-  flex: 1;
-  max-width: 200px;
-  margin: 0 0.5rem;
-}
-
-.search-container {
+.header-search-form-wrapper {
   position: relative;
   display: flex;
   align-items: center;
+  z-index: 10;
+  isolation: isolate;
+  /* Remover cualquier padding o margin que pueda crear área de hover */
+  padding: 0;
+  margin: 0;
 }
 
-.search-input {
-  width: 100%;
-  padding: 0.5rem 2.5rem 0.5rem 0.75rem;
-  border: 1px solid #d1d5db;
-  border-radius: 0.375rem;
-  font-size: 0.875rem;
-  background-color: white;
-  transition: border-color 0.2s ease;
+.searchBox {
+  position: relative;
+  background: #2563eb;
+  height: 40px;
+  border-radius: 40px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  transition: all 0.4s ease;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+  overflow: hidden;
+  z-index: 1;
+  isolation: isolate;
+  /* Asegurar que el hover solo funcione en el área exacta del searchBox */
+  cursor: pointer;
 }
 
-.search-input:focus {
+.searchBox:hover {
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.4);
+}
+
+.searchBox:hover>.searchInput {
+  width: 240px;
+  padding: 0 12px;
+}
+
+.searchBox:hover>.searchButton {
+  background: white;
+  color: #2563eb;
+}
+
+.searchButton {
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: transparent;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.4s ease;
+  cursor: pointer;
+  flex-shrink: 0;
+  margin-left: 0;
+  z-index: 2;
+}
+
+.searchButton:hover {
+  transform: scale(1.1);
+}
+
+.searchButton .search-icon {
+  width: 18px;
+  height: 18px;
+  transition: all 0.4s ease;
+}
+
+.searchInput {
+  border: none;
+  background: none;
   outline: none;
-  border-color: #2563eb;
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+  padding: 0;
+  color: white;
+  font-size: 14px;
+  transition: all 0.4s ease;
+  line-height: 40px;
+  width: 0px;
+  flex: 1;
+  margin: 0;
+  z-index: 1;
+}
+
+.searchInput::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* ========================================
+   PREVENIR CONFLICTOS CON ESTILOS EXTERNOS
+   ======================================== */
+
+/* Reset para elementos que puedan interferir */
+.header-search-form-wrapper * {
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* Asegurar que el search no interfiera con la navegación */
+.header-search-form-wrapper {
+  contain: layout style;
+  /* IMPORTANTE: Prevenir hover en el wrapper */
+  pointer-events: none;
+}
+
+/* Solo el searchBox debe tener pointer-events */
+.searchBox {
+  pointer-events: auto;
+}
+
+/* Prevenir que otros elementos afecten el search */
+.searchBox,
+.searchInput,
+.searchButton {
+  contain: layout style;
+}
+
+/* Reset específico para evitar conflictos */
+.searchBox:hover>.searchInput {
+  width: 240px !important;
+  padding: 0 12px !important;
+}
+
+.searchBox:hover>.searchButton {
+  background: white !important;
+  color: #2563eb !important;
+}
+
+/* Prevenir que la navegación interfiera con el search */
+.header-desktop-nav {
+  position: relative;
+  z-index: 1;
+  isolation: isolate;
+}
+
+.nav-item {
+  position: relative;
+  z-index: 1;
+}
+
+.nav-dropdown {
+  position: relative;
+  z-index: 1;
+}
+
+/* Asegurar que el search tenga prioridad */
+.header-search-form-wrapper {
+  z-index: 20 !important;
+}
+
+.searchBox {
+  z-index: 21 !important;
+}
+
+
+/* Responsive para móvil */
+@media screen and (max-width: 620px) {
+  .searchBox:hover>.searchInput {
+    width: 150px;
+    padding: 0 8px;
+  }
+
+  .searchBox {
+    height: 36px;
+  }
+
+  .searchButton {
+    width: 36px;
+    height: 36px;
+  }
+
+  .searchButton .search-icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .searchInput {
+    font-size: 13px;
+    line-height: 36px;
+  }
+
+  /* Mobile search específico */
+  .mobile-search {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
+
+  .mobile-search .searchBox {
+    width: 100%;
+    max-width: 200px;
+  }
+}
+
+/* ========================================
+   SURFACE PRO 7 OPTIMIZATION (912 x 1368)
+   ======================================== */
+@media screen and (min-width: 912px) and (max-width: 1368px) {
+  .searchBox {
+    height: 38px;
+    /* Ajuste específico para Surface Pro 7 */
+  }
+
+  .searchButton {
+    width: 38px;
+    height: 38px;
+  }
+
+  .searchBox:hover>.searchInput {
+    width: 220px;
+    padding: 0 10px;
+  }
+
+  .searchInput {
+    line-height: 38px;
+    font-size: 14px;
+  }
 }
 
 .search-button {
@@ -1128,7 +1522,7 @@ body {
 .main-layout {
   background-color: white;
   width: 100%;
-  overflow-x: hidden;
+  /* overflow-x: hidden; ELIMINADO para que funcione sticky header */
 }
 
 /* ========================================
