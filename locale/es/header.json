@@ -1,0 +1,84 @@
+{
+  "company": {
+    "name": "FSKG Industrial Bearings Co., Ltd",
+    "email": "info@fskg.com",
+    "phone": "+86-510-82713083"
+  },
+  "navigation": {
+    "home": {
+      "label": "Inicio",
+      "type": "simple"
+    },
+    "about": {
+      "label": "Nosotros",
+      "type": "simple"
+    },
+    "products": {
+      "label": "Productos",
+      "type": "dropdown",
+      "items": {
+        "bearings": "Rodamientos",
+        "automotive": "Automotriz",
+        "industrial": "Industrial"
+      }
+    },
+    "services": {
+      "label": "Servicios",
+      "type": "dropdown",
+      "items": {
+        "consulting": "Consultoría",
+        "maintenance": "Mantenimiento",
+        "custom": "Personalizado"
+      }
+    },
+    "resources": {
+      "label": "Recursos",
+      "type": "dropdown",
+      "items": {
+        "videos": "Videos",
+        "articles": "Artículos",
+        "certifications": "Certificaciones"
+      }
+    },
+    "contact": {
+      "label": "Contacto",
+      "type": "simple"
+    }
+  },
+  "search": {
+    "placeholder": "Buscar productos...",
+    "buttonText": "Buscar"
+  },
+  "cta": {
+    "text": "Solicitar Cotización"
+  },
+  "languages": {
+    "current": "es",
+    "available": [
+      {
+        "name": "Español",
+        "code": "es",
+        "flag": "🇪🇸",
+        "nativeName": "Español",
+        "searchTerms": [
+          "español",
+          "spanish",
+          "españo",
+          "esp"
+        ]
+      },
+      {
+        "name": "English",
+        "code": "en",
+        "flag": "🇺🇸",
+        "nativeName": "English",
+        "searchTerms": [
+          "english",
+          "inglés",
+          "eng",
+          "en"
+        ]
+      }
+    ]
+  }
+}
