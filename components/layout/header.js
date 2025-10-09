@@ -123,10 +123,30 @@ export default function Header() {
           {/* Navegación Desktop */}
           {!isMobile && (
             <nav className="header-desktop-nav">
-              {Object.entries(t?.navigation || {}).map(([key, value]) => (
-                <a key={key} href={`#${key}`} className="nav-link">
-                  {value}
-                </a>
+              {Object.entries(t?.navigation || {}).map(([key, navItem]) => (
+                <div key={key} className="nav-item">
+                  {navItem.type === 'simple' ? (
+                    <a href={`#${key}`} className="nav-link">
+                      {navItem.label}
+                    </a>
+                  ) : (
+                    <div className="nav-dropdown">
+                      <a href={`#${key}`} className="nav-link dropdown-toggle">
+                        {navItem.label}
+                        <svg className="dropdown-icon" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+                        </svg>
+                      </a>
+                      <div className="dropdown-menu">
+                        {Object.entries(navItem.items || {}).map(([subKey, subLabel]) => (
+                          <a key={subKey} href={`#${key}/${subKey}`} className="dropdown-item">
+                            {subLabel}
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
               ))}
             </nav>
           )}

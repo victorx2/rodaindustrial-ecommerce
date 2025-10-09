@@ -5,10 +5,45 @@
     "phone": "+86-510-82713083"
   },
   "navigation": {
-    "home": "Home",
-    "about": "About",
-    "products": "Products",
-    "contact": "Contact"
+    "home": {
+      "label": "Home",
+      "type": "simple"
+    },
+    "about": {
+      "label": "About",
+      "type": "simple"
+    },
+    "products": {
+      "label": "Products",
+      "type": "dropdown",
+      "items": {
+        "bearings": "Bearings",
+        "automotive": "Automotive",
+        "industrial": "Industrial"
+      }
+    },
+    "services": {
+      "label": "Services",
+      "type": "dropdown",
+      "items": {
+        "consulting": "Consulting",
+        "maintenance": "Maintenance",
+        "custom": "Custom"
+      }
+    },
+    "resources": {
+      "label": "Resources",
+      "type": "dropdown",
+      "items": {
+        "videos": "Videos",
+        "articles": "Articles",
+        "certifications": "Certifications"
+      }
+    },
+    "contact": {
+      "label": "Contact",
+      "type": "simple"
+    }
   },
   "search": {
     "placeholder": "Search products...",
