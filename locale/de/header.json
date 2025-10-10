@@ -5,10 +5,45 @@
     "phone": "+86-510-82713083"
   },
   "navigation": {
-    "home": "Startseite",
-    "about": "Über uns",
-    "products": "Produkte",
-    "contact": "Kontakt"
+    "home": {
+      "label": "Startseite",
+      "type": "simple"
+    },
+    "about": {
+      "label": "Über uns",
+      "type": "simple"
+    },
+    "products": {
+      "label": "Produkte",
+      "type": "dropdown",
+      "items": {
+        "bearings": "Lager",
+        "automotive": "Automobil",
+        "industrial": "Industriell"
+      }
+    },
+    "services": {
+      "label": "Dienstleistungen",
+      "type": "dropdown",
+      "items": {
+        "consulting": "Beratung",
+        "maintenance": "Wartung",
+        "custom": "Maßgeschneidert"
+      }
+    },
+    "resources": {
+      "label": "Ressourcen",
+      "type": "dropdown",
+      "items": {
+        "videos": "Videos",
+        "articles": "Artikel",
+        "certifications": "Zertifizierungen"
+      }
+    },
+    "contact": {
+      "label": "Kontakt",
+      "type": "simple"
+    }
   },
   "search": {
     "placeholder": "Produkte suchen...",

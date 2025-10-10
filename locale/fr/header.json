@@ -5,10 +5,45 @@
     "phone": "+86-510-82713083"
   },
   "navigation": {
-    "home": "Accueil",
-    "about": "À propos",
-    "products": "Produits",
-    "contact": "Contact"
+    "home": {
+      "label": "Accueil",
+      "type": "simple"
+    },
+    "about": {
+      "label": "À propos",
+      "type": "simple"
+    },
+    "products": {
+      "label": "Produits",
+      "type": "dropdown",
+      "items": {
+        "bearings": "Roulements",
+        "automotive": "Automobile",
+        "industrial": "Industriel"
+      }
+    },
+    "services": {
+      "label": "Services",
+      "type": "dropdown",
+      "items": {
+        "consulting": "Conseil",
+        "maintenance": "Maintenance",
+        "custom": "Personnalisé"
+      }
+    },
+    "resources": {
+      "label": "Ressources",
+      "type": "dropdown",
+      "items": {
+        "videos": "Vidéos",
+        "articles": "Articles",
+        "certifications": "Certifications"
+      }
+    },
+    "contact": {
+      "label": "Contact",
+      "type": "simple"
+    }
   },
   "search": {
     "placeholder": "Rechercher des produits...",

@@ -5,10 +5,45 @@
     "phone": "+86-510-82713083"
   },
   "navigation": {
-    "home": "Home",
-    "about": "Chi siamo",
-    "products": "Prodotti",
-    "contact": "Contatto"
+    "home": {
+      "label": "Home",
+      "type": "simple"
+    },
+    "about": {
+      "label": "Chi siamo",
+      "type": "simple"
+    },
+    "products": {
+      "label": "Prodotti",
+      "type": "dropdown",
+      "items": {
+        "bearings": "Cuscinetti",
+        "automotive": "Automotive",
+        "industrial": "Industriale"
+      }
+    },
+    "services": {
+      "label": "Servizi",
+      "type": "dropdown",
+      "items": {
+        "consulting": "Consulenza",
+        "maintenance": "Manutenzione",
+        "custom": "Personalizzato"
+      }
+    },
+    "resources": {
+      "label": "Risorse",
+      "type": "dropdown",
+      "items": {
+        "videos": "Video",
+        "articles": "Articoli",
+        "certifications": "Certificazioni"
+      }
+    },
+    "contact": {
+      "label": "Contatto",
+      "type": "simple"
+    }
   },
   "search": {
     "placeholder": "Cerca prodotti...",
